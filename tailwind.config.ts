@@ -18,13 +18,53 @@ const config: Config = {
         'Arial',
         'sans-serif',
         'Apple Color Emoji',
-        'Segoe UI Emoji'
-      ]
+        'Segoe UI Emoji',
+      ],
     },
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        black: {
+          DEFAULT: 'var(--black)',
+          bg: 'var(--black-bg)',
+          4: 'var(--black-4)',
+          '/100': 'var(--black-100)',
+        },
+        body: {
+          black: 'var(--body-black)',
+        },
+        heading: {
+          black: {
+            DEFAULT: 'var(--heading-black)',
+            '/80': 'var(--heading-black-80)',
+          },
+        },
+        subheading: {
+          black: 'var(--subheading-black)',
+        },
+        grey: {
+          1: 'var(--grey-1)',
+          2: 'var(--grey-2)',
+          3: 'var(--grey-3)',
+          4: 'var(--grey-4)',
+        },
+        white: {
+          DEFAULT: 'var(--white)',
+          '[0.08]': 'var(--white-008)',
+          '/20': 'var(--white-20)',
+        },
+        blue: {
+          1: 'var(--blue-1)',
+        },
+        green: {
+          1: 'var(--green-1)',
+        },
+        yellow: {
+          1: 'var(--yellow-1)',
+          2: 'var(--yellow-2)',
+        },
+        red: {
+          1: 'var(--red-1)',
+        },
       },
     },
   },
