@@ -1,6 +1,9 @@
 // Components
 import Button from './components/button'
 
+// Types
+import { HTMLAttributes } from 'react'
+
 // Utilities
 import cx from 'classnames'
 
@@ -10,7 +13,26 @@ export default function Home() {
       {/* Hero */}
       <Hero />
       <HowItWorks />
-      {/* Features */}
+      <Feature
+        heading={`Deploy a zero-config, no-fuss VPN`}
+        subheading={`Deploy a WireGuard-based VPN that eliminates single points of failure.`}
+        buttonText={`Business VPN`}
+      />
+      <Feature
+        heading={`Securely access resources on any infrastructure`}
+        subheading={`Granularly segment your network to ensure the right users get access to the right resources.`}
+        buttonText={`Remote Access`}
+      />
+      <Feature
+        heading={`Unlock site-to-site networking`}
+        subheading={`Connect clouds, VPCs, and on-premises networks without opening firewall ports with NAT traversal.`}
+        buttonText={`Site-to-Site Networking`}
+      />
+      <Feature
+        heading={`Tailscale for Enterprise`}
+        subheading={`Gain the tools to protect enterprises of any scale with automated user onboarding, SSH session recording, and audit log streaming.`}
+        buttonText={`Enterprise`}
+      />
       {/* Integrations */}
       {/* CTA */}
       {/* Testimonials */}
@@ -294,6 +316,81 @@ const HowItWorks = ({ ...props }): JSX.Element => {
           </div>
         </div>
       </div>
+    </section>
+  )
+}
+
+const Feature = ({
+  heading,
+  subheading,
+  buttonText,
+  ...props
+}: {
+  heading: string
+  subheading: string
+  buttonText: string
+} & HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  return (
+    <section
+      className={cx('overflow-hidden', 'p-top-0', 'p-bottom-190')}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
+        <div
+          className={cx('text-left', 'mx-0')}
+          style={{ transform: 'translateX(40px) translateZ(0px)' }}
+        >
+          <h2
+            className={cx(
+              't-h3',
+              'text-black',
+              'mb-3',
+              'md:mb-6',
+              'max-w-[800px]'
+            )}
+          >
+            {heading}
+          </h2>
+          <div
+            className={cx(
+              't-b18',
+              'text-body-black',
+              'mb-5',
+              'lg:mb-10',
+              'max-w-[750px]'
+            )}
+          >
+            <div className={cx('content-prose')}>
+              <p>{subheading}</p>
+            </div>
+          </div>
+          <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}>
+            <div
+              className={cx(
+                'flex',
+                'w-full',
+                'flex-col',
+                'gap-y-4',
+                'xs:w-auto',
+                'xs:flex-row',
+                'xs:items-center',
+                'xs:space-x-5',
+                'md:space-x-[30px]'
+              )}
+            >
+              <Button variant="underlined">{buttonText}</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className={cx(
+          'bg-heading-black',
+          'rounded-[20px]',
+          'w-[1280px]',
+          'h-[584px]'
+        )}
+      ></div>
     </section>
   )
 }
