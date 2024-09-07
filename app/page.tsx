@@ -10,7 +10,6 @@ import cx from 'classnames'
 export default function Home() {
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
-      {/* Hero */}
       <Hero />
       <HowItWorks />
       <Feature
@@ -33,9 +32,9 @@ export default function Home() {
         subheading={`Gain the tools to protect enterprises of any scale with automated user onboarding, SSH session recording, and audit log streaming.`}
         buttonText={`Enterprise`}
       />
-      {/* Integrations */}
-      {/* Homelab */}
-      {/* Testimonials */}
+      <Integrations />
+      <Homelab />
+      <Testimonials />
       {/* Benefits */}
       {/* Security */}
       {/* Docs */}
@@ -391,6 +390,139 @@ const Feature = ({
           'h-[584px]'
         )}
       ></div>
+    </section>
+  )
+}
+
+const Integrations = ({ ...props }): JSX.Element => {
+  return (
+    <section
+      className={cx('overflow-hidden', 'p-top-175', 'p-bottom-175')}
+      {...props}
+    >
+      <div
+        className={cx(
+          'space-y-14',
+          'md:!space-y-20',
+          'lg:!space-y-[100px]',
+          'container'
+        )}
+      >
+        <div className={cx('text-left', 'mx-0')}>
+          <h2
+            className={cx(
+              't-h3',
+              'text-black',
+              'mb-3',
+              'md:mb-6',
+              'max-w-[670px]'
+            )}
+          >
+            {`100+ integrations means you can incorporate Tailscale`}
+            <span className={cx('text-subheading-black')}>
+              into any workflow
+            </span>
+          </h2>
+        </div>
+        {/* TODO: Shuffling tileboards */}
+        <div className={cx('grid', 'gap-[5px]', 'grid-cols-3')}></div>
+        <div className={cx('text-left', 'mx-0')}>
+          <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}>
+            <div
+              className={cx(
+                'flex',
+                'w-full',
+                'flex-col',
+                'gap-y-4',
+                'xs:w-auto',
+                'xs:flex-row',
+                'xs:items-center',
+                'xs:space-x-5',
+                'md:-space-x-[30px]'
+              )}
+            >
+              <Button>{`Operating systems`}</Button>
+              <Button variant="underlined">{`Identity providers`}</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const Homelab = ({ ...props }): JSX.Element => {
+  return (
+    <section
+      className={cx('overflow-hidden', 'p-top-0', 'p-bottom-0')}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
+        <div className={cx('text-center')}>
+          <div className={cx('justify-center', 'text-center')}>
+            <h2
+              className={cx('t-subheading', 'mb-5', 'text-subheading-black')}
+            >{`Homelab`}</h2>
+          </div>
+          <h3
+            className={cx('t-h3', 'text-black', 'mb-3', 'md:mb-6', 'mx-auto')}
+          >{`Your home away from home`}</h3>
+          <div
+            className={cx(
+              't-b20',
+              'text-body-black',
+              'mb-5',
+              'lg:mb-[72px]',
+              'mx-auto',
+              'max-w-[583px]'
+            )}
+          >
+            <div className={cx('content-prose')}>
+              <p>{`Access your homelab, personal devices, and dev environments wherever you are - for free.`}</p>
+            </div>
+          </div>
+          <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-center')}>
+            <div
+              className={cx(
+                'flex',
+                'w-full',
+                'flex-col',
+                'gap-y-4',
+                'xs:w-auto',
+                'xs:flex-row',
+                'xs:items-center',
+                'xs:space-x-5',
+                'md:space-x-[30px]'
+              )}
+            >
+              <Button>{`Download for free`}</Button>
+              <Button variant="underlined">{`Learn more`}</Button>
+            </div>
+          </div>
+        </div>
+        {/* TODO: Add Asset */}
+        <div className={cx('h-full', 'w-full')}>
+          <div className={cx('w-full')}></div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const Testimonials = ({ ...props }): JSX.Element => {
+  return (
+    <section
+      className={cx(
+        'overflow-hidden',
+        'bg-black-bg',
+        'p-top-185',
+        'p-bottom-185'
+      )}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20')}>
+        <div className={cx('relative')}></div>
+      </div>
     </section>
   )
 }
