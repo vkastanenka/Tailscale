@@ -34,7 +34,7 @@ export default function Home() {
         buttonText={`Enterprise`}
       />
       {/* Integrations */}
-      {/* CTA */}
+      {/* Homelab */}
       {/* Testimonials */}
       {/* Benefits */}
       {/* Security */}
