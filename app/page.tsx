@@ -35,10 +35,9 @@ export default function Home() {
       <Integrations />
       <Homelab />
       <Testimonials />
-      {/* Benefits */}
-      {/* Security */}
-      {/* Docs */}
-      {/* CTA */}
+      <Benefits />
+      <Security />
+      {/* Documentation */}
     </main>
   )
 }
@@ -523,6 +522,242 @@ const Testimonials = ({ ...props }): JSX.Element => {
       <div className={cx('space-y-8', 'md:!space-y-20')}>
         <div className={cx('relative')}></div>
       </div>
+    </section>
+  )
+}
+
+const Benefits = ({ ...props }): JSX.Element => {
+  const BenefitsButton = ({ ...props }) => {
+    return (
+      <a
+        className={cx(
+          'flex',
+          'flex-col',
+          'gap-2',
+          'overflow-hidden',
+          'rounded-xl',
+          'text-center',
+          'bg-grey-2',
+          'transition-transform',
+          'duration-300',
+          'ease-in-out',
+          'will-change-transform',
+          'hover:-translate-y-2'
+        )}
+        {...props}
+      >
+        <div
+          className={cx(
+            'px-5',
+            'pb-8',
+            'pt-6',
+            'md:px-[37px]',
+            'md:pb-[44px]',
+            'md:pt-[76px]'
+          )}
+        >
+          <div
+            className={cx(
+              'flex',
+              'flex-col',
+              'gap-5',
+              'items-center',
+              'justify-center'
+            )}
+          >
+            {/* TODO: Add Image */}
+            <div
+              className={cx('bg-heading-black', 'w-[138px]', 'h-[138px]')}
+            ></div>
+            <h4
+              className={cx('t-24', 'text-heading-black')}
+            >{`Quick deployment`}</h4>
+          </div>
+          <div
+            className={cx(
+              'mx-auto',
+              'mt-[10px]',
+              'md:max-w-[380px]',
+              't-16',
+              'text-subheading-black',
+              'md:mt-[10px]'
+            )}
+          >
+            {`Establish private networks in minutes and push out Tailscale to users without having to configure every device.`}
+          </div>
+        </div>
+      </a>
+    )
+  }
+
+  return (
+    <section
+      className={cx('overflow-hidden', 'p-top-175', 'p-bottom-175')}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
+        <div className={cx('text-left', 'mx-0')}>
+          <h2
+            className={cx('t-h3', 'text-black', 'mb-3', 'md:mb-6')}
+          >{`Simple, powerful, and reliable`}</h2>
+        </div>
+        <div
+          className={cx(
+            'grid',
+            'gap-8',
+            'sm:grid-cols-2',
+            'lg:gap-10',
+            'md:grid-cols-3'
+          )}
+        >
+          <BenefitsButton />
+          <BenefitsButton />
+          <BenefitsButton />
+        </div>
+        <div className={cx('grid', 'gap-8', 'sm:grid-cols-3', 'lg:gap-10')}>
+          <div className={cx('text-center')}>
+            <h4 className={cx('t-h1')}>{`3 mins`}</h4>
+            <div
+              className={cx('t-b18', 'mt-4', 'text-subheading-black')}
+            >{`to set up your network`}</div>
+          </div>
+          <div className={cx('text-center')}>
+            <h4 className={cx('t-h1')}>{`2.5m`}</h4>
+            <div
+              className={cx('t-b18', 'mt-4', 'text-subheading-black')}
+            >{`devices connected`}</div>
+          </div>
+          <div className={cx('text-center')}>
+            <h4 className={cx('t-h1')}>{`4k+`}</h4>
+            <div
+              className={cx('t-b18', 'mt-4', 'text-subheading-black')}
+            >{`companies running Tailscale`}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const Security = ({ ...props }): JSX.Element => {
+  const SecurityFeature = () => {
+    return (
+      <div className={cx('max-w-[150px]', 'lg:w-auto', 'lg:max-w-[180px]')}>
+        {/* TODO: Add Images */}
+        <div className={cx('bg-heading-black', 'w-[180px]', 'w-[211px]')} />
+      </div>
+    )
+  }
+
+  return (
+    <section
+      className={cx('overflow-hidden', 'bg-grey-2', 'p-top-75', 'p-bottom-75')}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
+        <div
+          className={cx(
+            'relative',
+            'mx-auto',
+            'flex',
+            'max-w-[1160px]',
+            'flex-col',
+            'items-center',
+            'justify-between',
+            'gap-6',
+            'gap-y-12',
+            'md-large:flex-row'
+          )}
+        >
+          <div
+            className={cx('text-left', 'mx-0', 'flex-1', 'md:max-w-[632px]')}
+          >
+            <h2
+              className={cx(
+                't-h2',
+                'text-black',
+                'mb-3',
+                'md:mb-6',
+                'max-w-[622px]'
+              )}
+            >{`Our commitment to security`}</h2>
+            <div
+              className={cx(
+                't-b20',
+                'text-body-black',
+                'mb-5',
+                'lg:mb-10',
+                'max-w-[623px]'
+              )}
+            >
+              <div className={cx('content-prose')}>
+                <p>{`We are committed to always safeguarding your data. Every connection is encrypted end-to-end using WireGuard®, a modern VPN protocol designed for usability, performance, and security. Stay up-to-date on updates via our security bulletin below.`}</p>
+              </div>
+            </div>
+            <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}>
+              <div
+                className={cx(
+                  'flex',
+                  'w-full',
+                  'flex-col',
+                  'gap-y-4',
+                  'xs:w-auto',
+                  'xs:flex-row',
+                  'xs:items-center',
+                  'xs:space-x-5',
+                  'md:space-x-[30px]'
+                )}
+              >
+                <Button>{`Learn more`}</Button>
+                <Button variant="underlined">{`Security bulletins`}</Button>
+              </div>
+            </div>
+          </div>
+          <div
+            className={cx(
+              'flex',
+              'max-w-[384px]',
+              'flex-1',
+              'flex-col',
+              'gap-4',
+              'md:gap-6',
+              'md-large:flex-row'
+            )}
+          >
+            <div
+              className={cx('flex', 'gap-4', 'md:gap-6', 'md-large:flex-col')}
+              style={{
+                transform: 'translateX(0px) translateY(20px) translateZ(0px)',
+              }}
+            >
+              <SecurityFeature />
+              <SecurityFeature />
+              <SecurityFeature />
+            </div>{' '}
+            <div
+              className={cx('flex', 'gap-4', 'md:gap-6', 'md-large:flex-col')}
+              style={{
+                transform: 'translateX(0px) translateY(-20px) translateZ(0px)',
+              }}
+            >
+              <SecurityFeature />
+              <SecurityFeature />
+              <SecurityFeature />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const Documentation = ({ ...props }): JSX.Element => {
+  return (
+    <section
+      className={cx('overflow-hidden', 'p-top-175', 'p-bottom-0')}
+      {...props}
+    >
+      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}></div>
     </section>
   )
 }
