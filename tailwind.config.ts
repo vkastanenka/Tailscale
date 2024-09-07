@@ -21,6 +21,13 @@ const config: Config = {
         'Segoe UI Emoji',
       ],
     },
+    screens: {
+      'xl': '1280px',
+      'lg': '1024px',
+      md: '768px',
+      sm: '640px',
+      '2xs': '320px',
+    },
     extend: {
       colors: {
         black: {
@@ -65,6 +72,10 @@ const config: Config = {
         red: {
           1: 'var(--red-1)',
         },
+      },
+      fontSize: {
+        52: '3.25rem',
+        72: '4.5rem',
       },
     },
   },

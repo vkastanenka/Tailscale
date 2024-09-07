@@ -43,13 +43,37 @@
 } */
 
 @layer base {
+  *,
+  *::after,
+  *::before {
+    @apply m-0 p-0;
+  }
+
   body {
     @apply font-inter;
+  }
+}
+
+@layer components {
+  .container {
+    @apply lg:px-[40px] max-w-[1280px] mx-auto px-[20px];
+  }
+
+  .container.is-wide {
+    @apply max-w-[1680px];
+  }
+
+  .container .container {
+    @apply px-0;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .t-b20 {
+    /* @apply 4xl:text-[1.25rem] lg:text-['calc(0.625rem + 0.78125rem)'] text-[1rem] leading-normal tracking-[-0.0125rem]; */
   }
 }

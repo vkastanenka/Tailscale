@@ -1,101 +1,246 @@
-import Image from "next/image";
+// Components
+import Button from './components/button'
+
+// Utilities
+import cx from 'classnames'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{' '}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
+      {/* Hero */}
+      <Hero />
+      <HowItWorks />
+      {/* Features */}
+      {/* Integrations */}
+      {/* CTA */}
+      {/* Testimonials */}
+      {/* Benefits */}
+      {/* Security */}
+      {/* Docs */}
+      {/* CTA */}
+    </main>
   )
+}
+
+const Hero = ({ ...props }): JSX.Element => {
+  return (
+    <section
+      className={cx('overflow-hidden', 'bg-grey-2', 'p-bottom-75')}
+      {...props}
+    >
+      <div
+        className={cx(
+          'space-y-8',
+          'md:!space-y-[65px]',
+          'container',
+          'is-wide'
+        )}
+      >
+        {/* Content */}
+        <div
+          className={cx(
+            'space-y-10',
+            'pt-24',
+            'lg:space-y-[115px]',
+            'lg:pt-[185px]',
+            'laptop:pt-[150px]'
+          )}
+        >
+          <div className={cx('container')}>
+            <div
+              className={cx(
+                'flex',
+                'flex-col',
+                'justify-between',
+                'gap-5',
+                'lg:flex-row',
+                'lg-items:end'
+              )}
+            >
+              <h1
+                className={cx(
+                  'w-full',
+                  'text-center',
+                  'lg:max-w-[750px]',
+                  'lg:text-left'
+                )}
+              >
+                <span
+                  className={cx(
+                    'relative',
+                    'inline-flex',
+                    'max-w-[90%]',
+                    'flex-wrap',
+                    'items-center',
+                    'justify-center',
+                    'gap-3',
+                    'gap-y-2',
+                    'overflow-hidden',
+                    'text-heading-black',
+                    'xxs:max-w-[300px]',
+                    'xs:max-w-none',
+                    'lg:inline'
+                  )}
+                >
+                  <span className={cx('t-72', 'font-medium')}>
+                    {`Secure, remote`}
+                    <span className={cx('ml-1.5', 'md:hidden')}>
+                      {`access to`}
+                    </span>
+                  </span>
+                  {/* TODO: Add transitions */}
+                  <div
+                    className={cx(
+                      'relative',
+                      'inline-flex',
+                      'w-auto',
+                      'items-center',
+                      'gap-4'
+                    )}
+                    style={{
+                      transform: 'none',
+                      transformOrigin: '50% 50% 0px',
+                    }}
+                  >
+                    <span
+                      className={cx(
+                        't-72',
+                        'hidden',
+                        'flex-1',
+                        'font-medium',
+                        'md:inline-block'
+                      )}
+                      style={{
+                        transform: 'none',
+                        transformOrigin: '50% 50% 0px',
+                      }}
+                    >
+                      {`access to`}
+                    </span>
+                    <div
+                      className={cx(
+                        't-52',
+                        'flex',
+                        'overflow-hidden',
+                        'rounded-[10px]',
+                        'px-3',
+                        'py-2',
+                        'font-medium',
+                        'text-white',
+                        'will-change-transform',
+                        'md:px-5',
+                        'md:py-2.5',
+                        'bg-red-1'
+                      )}
+                      style={{
+                        transform: 'none',
+                        transformOrigin: '50% 50% 0px',
+                      }}
+                    >
+                      <div
+                        className={cx(
+                          'flex',
+                          'items-center',
+                          'gap-[17px]',
+                          'will-change-transform'
+                        )}
+                        style={{
+                          opacity: 1,
+                          transform: 'none',
+                          transformOrigin: '50% 50% 0px',
+                        }}
+                      >
+                        kubernetes
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </h1>
+              <div
+                className={cx(
+                  'text-left',
+                  'mx-0',
+                  'mx-auto',
+                  'md:max-w-[441px]',
+                  'lg:mx-0'
+                )}
+              >
+                <div
+                  className={cx('t-b20', 'text-body-black', 'mb-5', 'lg:mb-9')}
+                >
+                  <div className={cx('content-prose')}>
+                    <p>{`Tailscale makes creating software-defined networks easy: securely connecting users, services, and devices.`}</p>
+                  </div>
+                </div>
+                <div
+                  className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}
+                >
+                  <div
+                    className={cx(
+                      'flex',
+                      'w-full',
+                      'flex-col',
+                      'gap-y-4',
+                      'xs:w-auto',
+                      'xs:flex-row',
+                      'xs:items-center',
+                      'xs:space-x-5',
+                      'md:space-x-[30px]'
+                    )}
+                  >
+                    <Button>{`Get Started`}</Button>
+                    <Button variant="underlined">{`Contact Sales`}</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className={cx(
+              'relative',
+              'mx-auto',
+              'md:aspect-[1360/725]',
+              'w-full',
+              'max-w-[1360px]',
+              'overflow-hidden',
+              'rounded-2xl',
+              'bg-black-4',
+              'will-change-transform'
+            )}
+          >
+            <div
+              className={cx(
+                'bg-heading-black',
+                'w-[1360px]',
+                'h-[725px]',
+                'rounded-2xl'
+              )}
+            ></div>
+          </div>
+          {/* Users */}
+          <div>
+            <h2
+              className={cx(
+                'body-new',
+                '!tracking-wider',
+                'font-mdio',
+                'font-medium',
+                'uppercase',
+                'mb-4',
+                'text-center',
+                'text-subheading-black',
+                'md:mb-8'
+              )}
+            >{`Trusted by 5,000+ companies`}</h2>
+            {/* TODO: Marquee */}
+            <div className={cx('relative', 'w-full')}></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const HowItWorks = ({ ...props }): JSX.Element => {
+  return <section {...props}></section>
 }
