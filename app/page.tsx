@@ -1,9 +1,7 @@
 // Components
 import Button from './components/button'
+import Feature, { FeatureGradient } from './components/feature'
 import SvgHomelab from './svg/homelab.svg'
-
-// Types
-import { HTMLAttributes } from 'react'
 
 // Utilities
 import cx from 'classnames'
@@ -68,7 +66,7 @@ const Hero = ({ ...props }): JSX.Element => {
             'space-y-10',
             'pt-24',
             'lg:space-y-[115px]',
-            'lg:pt-[185px]',
+            'lg:pt-[185px]'
           )}
         >
           <div className={cx('container')}>
@@ -329,98 +327,6 @@ const HowItWorks = ({ ...props }): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
-
-const Feature = ({
-  heading,
-  subheading,
-  buttonText,
-  headingMaxWidth = '800px',
-  subheadingMaxWidth = '750px',
-  children,
-  className,
-  ...props
-}: {
-  heading: string
-  subheading: string
-  buttonText: string
-  headingMaxWidth?: string
-  subheadingMaxWidth?: string
-} & HTMLAttributes<HTMLDivElement>): JSX.Element => {
-  return (
-    <section
-      className={cx('overflow-hidden', 'p-bottom-190', className)}
-      {...props}
-    >
-      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
-        <div
-          className={cx('text-left', 'mx-0')}
-          style={{ transform: 'translateX(40px) translateZ(0px)' }}
-        >
-          <h2
-            className={cx('t-h3', 'text-black', 'mb-3', 'md:mb-6')}
-            style={{ maxWidth: headingMaxWidth }}
-          >
-            {heading}
-          </h2>
-          <div
-            className={cx(
-              't-b18',
-              'text-body-black',
-              'mb-5',
-              'lg:mb-10',
-              'max-w-[750px]'
-            )}
-            style={{ maxWidth: subheadingMaxWidth }}
-          >
-            <div className={cx('content-prose')}>
-              <p>{subheading}</p>
-            </div>
-          </div>
-          <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}>
-            <div
-              className={cx(
-                'flex',
-                'w-full',
-                'flex-col',
-                'gap-y-4',
-                'xs:w-auto',
-                'xs:flex-row',
-                'xs:items-center',
-                'xs:space-x-5',
-                'md:space-x-[30px]'
-              )}
-            >
-              <Button variant="underlined">{buttonText}</Button>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cx('bg-black-bg', 'rounded-xl', 'w-[1280px]', 'h-[584px]')}
-        ></div>
-      </div>
-      {children}
-    </section>
-  )
-}
-
-const FeatureGradient = ({ ...props }): JSX.Element => {
-  return (
-    <div
-      className={cx(
-        'absolute',
-        'bottom-0',
-        'left-0',
-        'right-0',
-        'h-[200px]',
-        'w-full',
-        'bg-gradient-to-b',
-        'from-white',
-        'to-grey-1'
-      )}
-      {...props}
-    />
   )
 }
 
