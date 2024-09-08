@@ -12,26 +12,32 @@ export default function Home() {
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
       {/* <Hero /> */}
       <HowItWorks />
-      {/* <Feature
+      <Feature
         heading={`Deploy a zero-config, no-fuss VPN`}
         subheading={`Deploy a WireGuard-based VPN that eliminates single points of failure.`}
         buttonText={`Business VPN`}
-      /> */}
-      {/* <Feature
+      />
+      <Feature
         heading={`Securely access resources on any infrastructure`}
         subheading={`Granularly segment your network to ensure the right users get access to the right resources.`}
         buttonText={`Remote Access`}
-      /> */}
-      {/* <Feature
+        headingMaxWidth={`653px`}
+        subheadingMaxWidth={`673px`}
+      />
+      <Feature
         heading={`Unlock site-to-site networking`}
         subheading={`Connect clouds, VPCs, and on-premises networks without opening firewall ports with NAT traversal.`}
         buttonText={`Site-to-Site Networking`}
-      /> */}
-      {/* <Feature
+        subheadingMaxWidth={`709px`}
+      />
+      <Feature
+        className={cx('relative')}
         heading={`Tailscale for Enterprise`}
         subheading={`Gain the tools to protect enterprises of any scale with automated user onboarding, SSH session recording, and audit log streaming.`}
         buttonText={`Enterprise`}
-      /> */}
+      >
+        <FeatureGradient />
+      </Feature>
       {/* <Integrations /> */}
       {/* <Homelab /> */}
       {/* <Testimonials /> */}
@@ -331,15 +337,21 @@ const Feature = ({
   heading,
   subheading,
   buttonText,
+  headingMaxWidth = '800px',
+  subheadingMaxWidth = '750px',
+  children,
+  className,
   ...props
 }: {
   heading: string
   subheading: string
   buttonText: string
+  headingMaxWidth?: string
+  subheadingMaxWidth?: string
 } & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   return (
     <section
-      className={cx('overflow-hidden', 'p-top-0', 'p-bottom-190')}
+      className={cx('overflow-hidden', 'p-bottom-190', className)}
       {...props}
     >
       <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
@@ -348,13 +360,8 @@ const Feature = ({
           style={{ transform: 'translateX(40px) translateZ(0px)' }}
         >
           <h2
-            className={cx(
-              't-h3',
-              'text-black',
-              'mb-3',
-              'md:mb-6',
-              'max-w-[800px]'
-            )}
+            className={cx('t-h3', 'text-black', 'mb-3', 'md:mb-6')}
+            style={{ maxWidth: headingMaxWidth }}
           >
             {heading}
           </h2>
@@ -366,6 +373,7 @@ const Feature = ({
               'lg:mb-10',
               'max-w-[750px]'
             )}
+            style={{ maxWidth: subheadingMaxWidth }}
           >
             <div className={cx('content-prose')}>
               <p>{subheading}</p>
@@ -389,16 +397,31 @@ const Feature = ({
             </div>
           </div>
         </div>
+        <div
+          className={cx('bg-black-bg', 'rounded-xl', 'w-[1280px]', 'h-[584px]')}
+        ></div>
       </div>
-      <div
-        className={cx(
-          'bg-heading-black',
-          'rounded-[20px]',
-          'w-[1280px]',
-          'h-[584px]'
-        )}
-      ></div>
+      {children}
     </section>
+  )
+}
+
+const FeatureGradient = ({ ...props }): JSX.Element => {
+  return (
+    <div
+      className={cx(
+        'absolute',
+        'bottom-0',
+        'left-0',
+        'right-0',
+        'h-[200px]',
+        'w-full',
+        'bg-gradient-to-b',
+        'from-white',
+        'to-grey-1'
+      )}
+      {...props}
+    />
   )
 }
 
