@@ -44,9 +44,9 @@
 
 @layer base {
   *,
-  *::after,
-  *::before {
-    @apply m-0 p-0;
+  ::after,
+  ::before {
+    @apply m-0 p-0 box-content;
   }
 
   body {
@@ -56,7 +56,7 @@
 
 @layer components {
   .container {
-    @apply lg:px-[40px] max-w-[1280px] mx-auto px-[20px];
+    @apply w-auto max-w-[1280px] mx-auto px-[20px] lg:px-[40px];
   }
 
   .container.is-wide {
@@ -69,11 +69,61 @@
 }
 
 @layer utilities {
+  .p-bottom-175 {
+    @apply pb-[4rem] md:pb-[5rem] lg:pb-[175px];
+  }
+  
+  .p-top-115 {
+    @apply pt-[4rem] md:pt-[5rem] lg:pt-[115px];
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
   .t-b20 {
-    /* @apply 4xl:text-[1.25rem] lg:text-['calc(0.625rem + 0.78125rem)'] text-[1rem] leading-normal tracking-[-0.0125rem]; */
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: -.0125rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-b20 {
+      font-size: calc(.625rem + .78125vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-b20 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:mb-\[65px\] {
+      margin-bottom: 65px;
+    }
+  }
+
+  .t-58,
+  .t-h2 {
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -.10875rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-58,
+    .t-h2 {
+      font-size: calc(-.75rem + 5.46875vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-58,
+    .t-h2 {
+      font-size: 3.625rem;
+    }
   }
 }

@@ -269,7 +269,16 @@ const HowItWorks = ({ ...props }): JSX.Element => {
     >
       <div className={cx('space-y-8', 'md:!space-y-10', 'container')}>
         {/* TODO: Create element animation */}
-        <div className={cx('h-full', 'w-full')}>IP Address Element</div>
+        <div className={cx('flex', 'justify-center', 'w-full')}>
+          <div
+            className={cx(
+              'w-[654px]',
+              'h-[508px]',
+              'bg-black-bg',
+              'rounded-xl'
+            )}
+          />
+        </div>
         <div className={cx('text-center')}>
           <h2
             className={cx(
@@ -285,8 +294,8 @@ const HowItWorks = ({ ...props }): JSX.Element => {
             className={cx(
               't-b20',
               'text-body-black',
-              'mg-5',
-              'lg:mg-[65px]',
+              'mb-5',
+              'lg:mb-[65px]',
               'mx-auto',
               'max-w-[530px]'
             )}
