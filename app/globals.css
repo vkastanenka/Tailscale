@@ -125,6 +125,29 @@
     }
   }
 
+  .t-24,
+  .t-h6 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -.48px;
+  }
+
+  @media (min-width: 48rem) {
+    .t-24,
+    .t-h6 {
+      font-size: calc(.875rem + .78125vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+
+    .t-24,
+    .t-h6 {
+      font-size: 1.5rem;
+    }
+  }
+
   .t-48,
   .t-h3 {
     font-size: 1.75rem;
@@ -166,6 +189,28 @@
     .t-58,
     .t-h2 {
       font-size: 3.625rem;
+    }
+  }
+
+  .t-72,
+  .t-h1 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -.135rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-72,
+    .t-h1 {
+      font-size: calc(-1.125rem + 7.03125vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-72,
+    .t-h1 {
+      font-size: 4.5rem;
     }
   }
 
