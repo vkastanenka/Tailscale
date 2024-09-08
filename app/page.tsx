@@ -11,7 +11,7 @@ import cx from 'classnames'
 export default function Home() {
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
-      {/* <Hero /> */}
+      <Hero />
       <HowItWorks />
       <Feature
         heading={`Deploy a zero-config, no-fuss VPN`}
@@ -63,14 +63,12 @@ const Hero = ({ ...props }): JSX.Element => {
           'is-wide'
         )}
       >
-        {/* Content */}
         <div
           className={cx(
             'space-y-10',
             'pt-24',
             'lg:space-y-[115px]',
             'lg:pt-[185px]',
-            'laptop:pt-[150px]'
           )}
         >
           <div className={cx('container')}>

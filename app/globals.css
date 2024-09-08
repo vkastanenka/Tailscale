@@ -237,6 +237,24 @@
     }
   }
 
+  .t-52 {
+    font-size: 1.875rem;
+    line-height: 1.18;
+    letter-spacing: -1.56px;
+  }
+
+  @media (min-width: 48rem) {
+    .t-52 {
+      font-size: calc(-.1875rem + 4.296875vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-52 {
+      font-size: 3.25rem;
+    }
+  }
+
   .t-58,
   .t-h2 {
     font-size: 1.875rem;
