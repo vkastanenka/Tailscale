@@ -81,6 +81,10 @@
     @apply pt-[4rem] md:pt-[5rem] lg:pt-[115px];
   }
 
+  .p-top-175 {
+    @apply pt-[4rem] md:pt-[5rem] lg:pt-[175px];
+  }
+
   .text-balance {
     text-wrap: balance;
   }

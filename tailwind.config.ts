@@ -26,7 +26,7 @@ const config: Config = {
       'lg': '1024px',
       md: '768px',
       sm: '640px',
-      '2xs': '320px',
+      xs: '480px',
     },
     extend: {
       colors: {

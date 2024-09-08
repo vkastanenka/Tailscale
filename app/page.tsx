@@ -38,7 +38,7 @@ export default function Home() {
       >
         <FeatureGradient />
       </Feature>
-      {/* <Integrations /> */}
+      <Integrations />
       {/* <Homelab /> */}
       {/* <Testimonials /> */}
       {/* <Benefits /> */}
@@ -449,14 +449,14 @@ const Integrations = ({ ...props }): JSX.Element => {
               'max-w-[670px]'
             )}
           >
-            {`100+ integrations means you can incorporate Tailscale`}
+            {`100+ integrations means you can incorporate Tailscale `}
             <span className={cx('text-subheading-black')}>
               into any workflow
             </span>
           </h2>
         </div>
         {/* TODO: Shuffling tileboards */}
-        <div className={cx('grid', 'gap-[5px]', 'grid-cols-3')}></div>
+        {/* <div className={cx('grid', 'gap-[5px]', 'grid-cols-3')}></div> */}
         <div className={cx('text-left', 'mx-0')}>
           <div className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}>
             <div
@@ -469,7 +469,7 @@ const Integrations = ({ ...props }): JSX.Element => {
                 'xs:flex-row',
                 'xs:items-center',
                 'xs:space-x-5',
-                'md:-space-x-[30px]'
+                // 'md:-space-x-[30px]'
               )}
             >
               <Button>{`Operating systems`}</Button>
