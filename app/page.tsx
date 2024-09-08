@@ -1,5 +1,6 @@
 // Components
 import Button from './components/button'
+import SvgHomelab from './svg/homelab.svg'
 
 // Types
 import { HTMLAttributes } from 'react'
@@ -39,7 +40,7 @@ export default function Home() {
         <FeatureGradient />
       </Feature>
       <Integrations />
-      {/* <Homelab /> */}
+      <Homelab />
       {/* <Testimonials /> */}
       {/* <Benefits /> */}
       {/* <Security /> */}
@@ -468,7 +469,7 @@ const Integrations = ({ ...props }): JSX.Element => {
                 'xs:w-auto',
                 'xs:flex-row',
                 'xs:items-center',
-                'xs:space-x-5',
+                'xs:space-x-5'
                 // 'md:-space-x-[30px]'
               )}
             >
@@ -533,7 +534,9 @@ const Homelab = ({ ...props }): JSX.Element => {
         </div>
         {/* TODO: Add Asset */}
         <div className={cx('h-full', 'w-full')}>
-          <div className={cx('w-full')}></div>
+          <div className={cx('w-full')}>
+            <SvgHomelab />
+          </div>
         </div>
       </div>
     </section>

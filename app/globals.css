@@ -125,12 +125,6 @@
     }
   }
 
-  @media (min-width: 1024px) {
-    .lg\:mb-\[65px\] {
-      margin-bottom: 65px;
-    }
-  }
-
   .t-48,
   .t-h3 {
     font-size: 1.75rem;
@@ -172,6 +166,24 @@
     .t-58,
     .t-h2 {
       font-size: 3.625rem;
+    }
+  }
+
+  .t-subheading {
+    font-size: .875rem;
+    line-height: 1.5;
+    letter-spacing: -.01125rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-subheading {
+      font-size: calc(.5rem + .78125vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-subheading {
+      font-size: 1.125rem;
     }
   }
 }
