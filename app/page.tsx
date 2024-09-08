@@ -41,10 +41,10 @@ export default function Home() {
       </Feature>
       <Integrations />
       <Homelab />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <Benefits />
       <Security />
-      {/* <Documentation /> */}
+      <Documentation />
     </main>
   )
 }
@@ -806,7 +806,7 @@ const Documentation = ({ ...props }): JSX.Element => {
             <div
               className={cx(
                 'flex',
-                'h-full',
+                // 'h-full',
                 'flex-col',
                 'justify-between',
                 'rounded-xl',
@@ -824,16 +824,16 @@ const Documentation = ({ ...props }): JSX.Element => {
                     className={cx(
                       't-20',
                       'mt-[15px]',
-                      'text-white/70',
+                      'text-white-70',
                       'opacity-70'
                     )}
-                  >{`With 100+ integrations, Tailscale works with all your favorite tools. Provision resources that automatically join the tailnet using Terraform or Pulumi. Integrate ACL management into your existing GitOps workflow. Our docs will help you get started on building your tailnet today.&nbsp;`}</div>
+                  >{`With 100+ integrations, Tailscale works with all your favorite tools. Provision resources that automatically join the tailnet using Terraform or Pulumi. Integrate ACL management into your existing GitOps workflow. Our docs will help you get started on building your tailnet today.`}</div>
                   <div className={cx('mt-8')}>
                     <Button>{`See docs`}</Button>
                   </div>
                 </div>
               </div>
-              <div className={cx('pl-5', 'xl:pl-[50px]')}>
+              {/* <div className={cx('pl-5', 'xl:pl-[50px]')}>
                 <div
                   className={cx(
                     'bg-white',
@@ -842,7 +842,7 @@ const Documentation = ({ ...props }): JSX.Element => {
                     'rounded-xl'
                   )}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={cx('flex-[0.35]', 'md:max-w-[400px]')}>
@@ -879,8 +879,6 @@ const Documentation = ({ ...props }): JSX.Element => {
                 <div className={cx('mt-3', 'md:mt-[30px]')}>
                   <div
                     className={cx(
-                      'underlinex',
-                      'underline-offset-8x',
                       'group',
                       'relative',
                       'inline-flex',
@@ -901,7 +899,7 @@ const Documentation = ({ ...props }): JSX.Element => {
                     <span
                       className={cx('transition-colors')}
                     >{`Read guide`}</span>
-                    <span
+                    {/* <span
                       className={cx(
                         'block',
                         'will-change-transform',
@@ -909,7 +907,7 @@ const Documentation = ({ ...props }): JSX.Element => {
                       )}
                     >
                       <svg>svg</svg>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>

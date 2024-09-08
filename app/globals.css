@@ -6,7 +6,7 @@
   /* colors */
   --black: rgb(0, 0, 0);
   --black-bg: rgb(37, 34, 34);
-  --black-4: #rgb(36, 36, 36);
+  --black-4: rgb(36, 36, 36);
   --black-100: #000;
   
   --body-black: #302c2ca6;
@@ -24,6 +24,7 @@
   --white: #fff;
   --white-008: #ffffff14;
   --white-20: #fff3;
+  --white-70: #ffffffb3;
 
   --blue-1: rgb(29, 49, 91);
   
@@ -133,6 +134,42 @@
     }
   }
 
+  .t-16 {
+    font-size: .9375rem;
+    line-height: 1.5;
+    letter-spacing: -.01rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-16 {
+      font-size: calc(.84375rem + .1953125vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-16 {
+      font-size: 1rem;
+    }
+  }
+
+  .t-20 {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    letter-spacing: -.4px;
+  }
+
+  @media (min-width: 48rem) {
+    .t-20 {
+      font-size: calc(.9375rem + .390625vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-20 {
+      font-size: 1.25rem;
+    }
+  }
+
   .t-24,
   .t-h6 {
     font-size: 1.25rem;
@@ -153,6 +190,28 @@
     .t-24,
     .t-h6 {
       font-size: 1.5rem;
+    }
+  }
+
+  .t-36,
+  .t-h4 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -.045rem;
+  }
+
+  @media (min-width: 48rem) {
+    .t-36,
+    .t-h4 {
+      font-size: calc(1rem + 1.5625vw);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .t-36,
+    .t-h4 {
+      font-size: 2.25rem;
     }
   }
 

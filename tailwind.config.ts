@@ -58,7 +58,8 @@ const config: Config = {
         white: {
           DEFAULT: 'var(--white)',
           '[0.08]': 'var(--white-008)',
-          '/20': 'var(--white-20)',
+          '20': 'var(--white-20)',
+          '70': 'var(--white-70)',
         },
         blue: {
           1: 'var(--blue-1)',
