@@ -1,15 +1,29 @@
 // Components
 import Button from './components/button'
+import Image from 'next/image'
 import Feature, { FeatureGradient } from './components/feature'
 import SvgHomelab from './svg/homelab.svg'
 
 // Utilities
 import cx from 'classnames'
 
-export default function Home() {
+// Sanity
+import { client } from '@/sanity/lib/client'
+import { HOME_PAGE_QUERY } from '@/sanity/lib/queries'
+import { urlFor } from '@/sanity/lib/image'
+
+export default async function Home() {
+  const homePageData = await client.fetch(HOME_PAGE_QUERY)
+
+  // console.log(homePageData)
+
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
-      <Hero />
+      {/* <img src={urlFor(staticData.imageUrl).url()} /> */}
+      <Hero
+        imageDesktop={homePageData.heroImageDesktop}
+        imageMobile={homePageData.heroImageMobile}
+      />
       <HowItWorks />
       <Feature
         heading={`Deploy a zero-config, no-fuss VPN`}
@@ -47,7 +61,13 @@ export default function Home() {
   )
 }
 
-const Hero = ({ ...props }): JSX.Element => {
+// export const getInitialProps = async () => {
+//   const homePage = await client.fetch(HOME_PAGE_QUERY)
+
+//   return { homePage }
+// }
+
+const Hero = ({ imageDesktop, imageMobile, ...props }): JSX.Element => {
   return (
     <section
       className={cx('overflow-hidden', 'bg-grey-2', 'p-bottom-75')}
@@ -231,16 +251,34 @@ const Hero = ({ ...props }): JSX.Element => {
               'will-change-transform'
             )}
           >
-            <div
+            <Image
+              alt={imageDesktop.altText}
+              src={urlFor(imageDesktop.url).url()}
               className={cx(
-                'bg-heading-black',
-                'w-[1360px]',
-                'h-[725px]',
-                'rounded-2xl'
+                'hidden',
+                'md:block',
+                'rounded-2xl',
+                'overflow-hidden',
+                'mx-auto'
               )}
-            ></div>
+              width={imageDesktop.dimensions.width}
+              height={imageDesktop.dimensions.height}
+            />
+            <Image
+              alt={imageMobile.altText}
+              src={urlFor(imageMobile.url).url()}
+              className={cx(
+                'block',
+                'md:hidden',
+                'w-full',
+                'rounded-2xl',
+                'overflow-hidden',
+                'mx-auto'
+              )}
+              width={imageMobile.dimensions.width}
+              height={imageMobile.dimensions.height}
+            />
           </div>
-          {/* Users */}
           <div>
             <h2
               className={cx(
