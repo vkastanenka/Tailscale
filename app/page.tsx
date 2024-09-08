@@ -10,34 +10,34 @@ import cx from 'classnames'
 export default function Home() {
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
-      <Hero />
+      {/* <Hero /> */}
       <HowItWorks />
-      <Feature
+      {/* <Feature
         heading={`Deploy a zero-config, no-fuss VPN`}
         subheading={`Deploy a WireGuard-based VPN that eliminates single points of failure.`}
         buttonText={`Business VPN`}
-      />
-      <Feature
+      /> */}
+      {/* <Feature
         heading={`Securely access resources on any infrastructure`}
         subheading={`Granularly segment your network to ensure the right users get access to the right resources.`}
         buttonText={`Remote Access`}
-      />
-      <Feature
+      /> */}
+      {/* <Feature
         heading={`Unlock site-to-site networking`}
         subheading={`Connect clouds, VPCs, and on-premises networks without opening firewall ports with NAT traversal.`}
         buttonText={`Site-to-Site Networking`}
-      />
-      <Feature
+      /> */}
+      {/* <Feature
         heading={`Tailscale for Enterprise`}
         subheading={`Gain the tools to protect enterprises of any scale with automated user onboarding, SSH session recording, and audit log streaming.`}
         buttonText={`Enterprise`}
-      />
-      <Integrations />
-      <Homelab />
-      <Testimonials />
-      <Benefits />
-      <Security />
-      <Documentation />
+      /> */}
+      {/* <Integrations /> */}
+      {/* <Homelab /> */}
+      {/* <Testimonials /> */}
+      {/* <Benefits /> */}
+      {/* <Security /> */}
+      {/* <Documentation /> */}
     </main>
   )
 }
@@ -866,7 +866,13 @@ const Documentation = ({ ...props }): JSX.Element => {
                     <span
                       className={cx('transition-colors')}
                     >{`Read guide`}</span>
-                    <span className={cx('block', 'will-change-transform', 'group-hover:animate-bounceX')}>
+                    <span
+                      className={cx(
+                        'block',
+                        'will-change-transform',
+                        'group-hover:animate-bounceX'
+                      )}
+                    >
                       <svg>svg</svg>
                     </span>
                   </div>
