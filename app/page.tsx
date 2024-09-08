@@ -43,7 +43,7 @@ export default function Home() {
       <Homelab />
       {/* <Testimonials /> */}
       <Benefits />
-      {/* <Security /> */}
+      <Security />
       {/* <Documentation /> */}
     </main>
   )

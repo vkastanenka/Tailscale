@@ -69,12 +69,20 @@
 }
 
 @layer utilities {
+  .p-bottom-75 {
+    @apply pb-[4rem] lg:pb-[75px];
+  }
+
   .p-bottom-175 {
     @apply pb-[4rem] md:pb-[5rem] lg:pb-[175px];
   }
   
   .p-bottom-190 {
     @apply pb-[4rem] md:pb-[5rem] lg:pb-[190px];
+  }
+
+  .p-top-75 {
+    @apply pt-[4rem] lg:pt-[75px];
   }
   
   .p-top-115 {
