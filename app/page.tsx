@@ -19,7 +19,7 @@ import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 export default async function Home() {
   const homePageData = await client.fetch(HOME_PAGE_QUERY);
 
-  // console.log(homePageData.benefitsList)
+  // console.log(homePageData.companyLogos)
 
   return (
     <main className={cx("mt-[-60px]", "lg:mt-[-66px]")}>
@@ -31,6 +31,8 @@ export default async function Home() {
           heroSubheading: homePageData.heroSubheading,
           heroImageDesktop: homePageData.heroImageDesktop,
           heroImageMobile: homePageData.heroImageMobile,
+          heroCompanyTrustHeading: homePageData.heroCompanyTrustHeading,
+          companyLogos: homePageData.companyLogos
         }}
       />
       <HowItWorks

@@ -10,8 +10,8 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   heroSubheading,
   heroImageDesktop{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText, },
   heroImageMobile{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
-  // heroCompanyTrustHeading,
-  // companyLogos[]->{"url": image.image.asset->url, "altText": image.altText},
+  heroCompanyTrustHeading,
+  companyLogos[]->{"url": image.image.asset->url, "dimensions": image.image.asset->metadata.dimensions, "altText": image.altText},
 
   // howItWorks
   howItWorksHeading,

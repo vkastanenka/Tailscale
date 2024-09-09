@@ -67,12 +67,51 @@
   .container .container {
     @apply px-0;
   }
+
+  .marquee {
+    @apply flex grow-0 shrink-0 basis-auto min-w-[var(--min-width)] z-[1] flex flex-row items-center;
+    animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+    animation-play-state: var(--play);
+    animation-delay: var(--delay);
+    animation-direction: var(--direction);
+  }
+
+  .marquee-container {
+    @apply !overflow-x-hidden !flex !flex-row relative w-[var(--width)];
+    transform: var(--transform);
+  }
+
+  .logo-marquee {
+    @apply flex items-center;
+    mask-image: linear-gradient(var(--mask-direction,to right),#0000,#000 20%,#000 80%,#0000);
+  }
+
+  .logo-marquee .child {
+    @apply flex items-center ml-[0.25rem] mr-[0.25rem] md:ml-[35px] md:mr-[35px]
+  }
+
+  .initial-child-container {
+    @apply flex grow-0 shrink-0 basis-auto min-w-[auto] flex-row;
+  }
 }
 
 @layer utilities {
   @keyframes fadeInUp {
     from { opacity: 0%; transform: translateY(20px) }
     to { opacity: 100%; transform: translateY(0px) }
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0) }
+    to { transform: translateX(-100%) }
+  }
+
+  .body-new {
+    @apply text-[1rem] leading-[150%] tracking-[0.16px];
+  }
+
+  .tracking-wider {
+    @apply tracking-[0.05em];
   }
 
   .p-bottom-75 {

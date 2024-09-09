@@ -39,6 +39,10 @@ const homePageType = defineType({
       type: "img",
     }),
     defineField({
+      name: "heroCompanyTrustHeading",
+      type: "string",
+    }),
+    defineField({
       name: "companyLogos",
       type: "array",
       of: [

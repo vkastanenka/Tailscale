@@ -20,6 +20,8 @@ interface Home {
     heroSubheading: string;
     heroImageDesktop: SanityImg;
     heroImageMobile: SanityImg;
+    heroCompanyTrustHeading: string;
+    companyLogos: SanityImg[];
   };
 }
 
@@ -247,22 +249,130 @@ const Hero = ({ sanityData, ...props }: Home): JSX.Element => {
               height={sanityData.heroImageMobile.dimensions.height}
             />
           </div>
-          <div>
-            <h2
-              className={cx(
-                "body-new",
-                "!tracking-wider",
-                "font-mdio",
-                "font-medium",
-                "uppercase",
-                "mb-4",
-                "text-center",
-                "text-subheading-black",
-                "md:mb-8"
-              )}
-            >{`Trusted by 5,000+ companies`}</h2>
-            {/* TODO: Marquee */}
-            <div className={cx("relative", "w-full")}></div>
+        </div>
+        <div>
+          <h2
+            className={cx(
+              "body-new",
+              "!tracking-wider",
+              "font-mdio",
+              "font-medium",
+              "uppercase",
+              "mb-4",
+              "text-center",
+              "text-subheading-black",
+              "md:mb-8"
+            )}
+          >
+            {sanityData.heroCompanyTrustHeading}
+          </h2>
+          <div className={cx("relative", "w-full")}>
+            <div
+              className={cx("marquee-container", "logo-marquee", "w-full")}
+              style={
+                {
+                  "--play": "running",
+                  "--direction": "normal",
+                  "--duration": "88.88s",
+                  "--delay": "0s",
+                  "--iteration-count": "infinite",
+                  "--min-width": "100%",
+                } as React.CSSProperties
+              }
+            >
+              <div
+                className={cx("marquee")}
+                style={
+                  {
+                    "--play": "running",
+                    "--direction": "normal",
+                    "--duration": "88.88s",
+                    "--delay": "0s",
+                    "--iteration-count": "infinite",
+                    "--min-width": "100%",
+                  } as React.CSSProperties
+                }
+              >
+                <div className={cx("initial-child-container")}>
+                  {sanityData.companyLogos.map((logo, i) => (
+                    <div
+                      key={i}
+                      className={cx("child")}
+                      style={
+                        {
+                          "--transform": "none",
+                        } as React.CSSProperties
+                      }
+                    >
+                      <div
+                        className={cx(
+                          "flex",
+                          "w-auto",
+                          "max-w-[150px]",
+                          "items-center",
+                          "md:max-w-none"
+                        )}
+                      >
+                        <Image
+                          priority
+                          alt={logo.altText}
+                          src={urlFor(logo.url).url()}
+                          className={cx("mx-auto")}
+                          width={logo.dimensions.width}
+                          height={logo.dimensions.height}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div
+                className={cx("marquee")}
+                style={
+                  {
+                    "--play": "running",
+                    "--direction": "normal",
+                    "--duration": "88.88s",
+                    "--delay": "0s",
+                    "--iteration-count": "infinite",
+                    "--min-width": "100%",
+                  } as React.CSSProperties
+                }
+              >
+                <div className={cx("initial-child-container")}>
+                  {sanityData.companyLogos.map((logo, i) => (
+                    <div
+                      key={i}
+                      className={cx("child")}
+                      style={
+                        {
+                          "--transform": "none",
+                        } as React.CSSProperties
+                      }
+                    >
+                      <div
+                        className={cx(
+                          "flex",
+                          "w-auto",
+                          "max-w-[150px]",
+                          "items-center",
+                          "md:max-w-none"
+                        )}
+                      >
+                        <Image
+                          priority
+                          alt={logo.altText}
+                          src={urlFor(logo.url).url()}
+                          className={cx("mx-auto")}
+                          width={logo.dimensions.width}
+                          height={logo.dimensions.height}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
