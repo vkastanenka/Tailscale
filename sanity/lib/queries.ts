@@ -1,4 +1,4 @@
-import { defineQuery } from 'next-sanity'
+import { defineQuery } from "next-sanity";
 
 export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   title,
@@ -61,12 +61,12 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   homelabSubheading,
   // homelabButton1
   // homelabButton2
-  homelabImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}
+  homelabImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   // benefits
-  // benefitsHeading,
-  // benefitsList[]{"imageUrl": image.image.asset->url, "imageAltText": image.altText, heading, subheading},
-  // // accoladesList
+  benefitsHeading,
+  benefitsList[]{image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}, heading, subheading},
+  accoladesList[]
 
   // security
   // securityHeading,
@@ -86,4 +86,4 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   // quickstartSubheading,
   // quickstartImage{"url": image.asset->url, altText},
   // // quickstartButton
-}`)
+}`);

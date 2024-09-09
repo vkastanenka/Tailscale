@@ -5,6 +5,8 @@ import HowItWorks from "./components/howItWorks";
 import Feature, { FeatureGradient } from "./components/feature";
 import Integrations from "./components/integrations";
 import Homelab from "./components/homelab";
+import Testimonials from "./components/testimonials";
+import Benefits from "./components/benefits";
 
 // Utilities
 import cx from "classnames";
@@ -16,7 +18,7 @@ import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 export default async function Home() {
   const homePageData = await client.fetch(HOME_PAGE_QUERY);
 
-  console.log(homePageData.homelabImage)
+  // console.log(homePageData.benefitsList)
 
   return (
     <main className={cx("mt-[-60px]", "lg:mt-[-66px]")}>
@@ -90,143 +92,18 @@ export default async function Home() {
         }}
       />
       <Testimonials />
-      <Benefits />
+      <Benefits
+        sanityData={{
+          benefitsHeading: homePageData.benefitsHeading,
+          benefitsList: homePageData.benefitsList,
+          accoladesList: homePageData.accoladesList,
+        }}
+      />
       <Security />
       <Documentation />
     </main>
   );
 }
-
-const Testimonials = ({ ...props }): JSX.Element => {
-  return (
-    <section
-      className={cx(
-        "overflow-hidden",
-        "bg-black-bg",
-        "p-top-185",
-        "p-bottom-185"
-      )}
-      {...props}
-    >
-      <div className={cx("space-y-8", "md:!space-y-20")}>
-        <div className={cx("relative")}></div>
-      </div>
-    </section>
-  );
-};
-
-const Benefits = ({ ...props }): JSX.Element => {
-  const BenefitsButton = ({ ...props }) => {
-    return (
-      <a
-        className={cx(
-          "flex",
-          "flex-col",
-          "gap-2",
-          "overflow-hidden",
-          "rounded-xl",
-          "text-center",
-          "bg-grey-2",
-          "transition-transform",
-          "duration-300",
-          "ease-in-out",
-          "will-change-transform",
-          "hover:-translate-y-2"
-        )}
-        {...props}
-      >
-        <div
-          className={cx(
-            "px-5",
-            "pb-8",
-            "pt-6",
-            "md:px-[37px]",
-            "md:pb-[44px]",
-            "md:pt-[76px]"
-          )}
-        >
-          <div
-            className={cx(
-              "flex",
-              "flex-col",
-              "gap-5",
-              "items-center",
-              "justify-center"
-            )}
-          >
-            {/* TODO: Add Image */}
-            <div
-              className={cx("bg-heading-black", "w-[138px]", "h-[138px]")}
-            ></div>
-            <h4
-              className={cx("t-24", "text-heading-black")}
-            >{`Quick deployment`}</h4>
-          </div>
-          <div
-            className={cx(
-              "mx-auto",
-              "mt-[10px]",
-              "md:max-w-[380px]",
-              "t-16",
-              "text-subheading-black",
-              "md:mt-[10px]"
-            )}
-          >
-            {`Establish private networks in minutes and push out Tailscale to users without having to configure every device.`}
-          </div>
-        </div>
-      </a>
-    );
-  };
-
-  return (
-    <section
-      className={cx("overflow-hidden", "p-top-175", "p-bottom-175")}
-      {...props}
-    >
-      <div className={cx("space-y-8", "md:!space-y-20", "container")}>
-        <div className={cx("text-left", "mx-0")}>
-          <h2
-            className={cx("t-h3", "text-black", "mb-3", "md:mb-6")}
-          >{`Simple, powerful, and reliable`}</h2>
-        </div>
-        <div
-          className={cx(
-            "grid",
-            "gap-8",
-            "sm:grid-cols-2",
-            "lg:gap-10",
-            "md:grid-cols-3"
-          )}
-        >
-          <BenefitsButton />
-          <BenefitsButton />
-          <BenefitsButton />
-        </div>
-        <div className={cx("grid", "gap-8", "sm:grid-cols-3", "lg:gap-10")}>
-          <div className={cx("text-center")}>
-            <h4 className={cx("t-h1")}>{`3 mins`}</h4>
-            <div
-              className={cx("t-b18", "mt-4", "text-subheading-black")}
-            >{`to set up your network`}</div>
-          </div>
-          <div className={cx("text-center")}>
-            <h4 className={cx("t-h1")}>{`2.5m`}</h4>
-            <div
-              className={cx("t-b18", "mt-4", "text-subheading-black")}
-            >{`devices connected`}</div>
-          </div>
-          <div className={cx("text-center")}>
-            <h4 className={cx("t-h1")}>{`4k+`}</h4>
-            <div
-              className={cx("t-b18", "mt-4", "text-subheading-black")}
-            >{`companies running Tailscale`}</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Security = ({ ...props }): JSX.Element => {
   const SecurityFeature = () => {
