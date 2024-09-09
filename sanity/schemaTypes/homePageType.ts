@@ -12,6 +12,25 @@ export const homePageType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'heroHeading1',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heroHeading2',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heroHeadingList',
+      type: 'array',
+      of: [
+        defineArrayMember({ type: 'homePageHeroHeadingListItem' }),
+      ],
+    }),
+    defineField({
+      name: 'heroSubheading',
+      type: 'text',
+    }),
+    defineField({
       name: 'heroImageDesktop',
       type: 'img',
     }),
@@ -69,6 +88,28 @@ export const homePageType = defineType({
     select: {
       title: 'title',
       media: 'heroImageDesktop.image',
+    },
+  },
+})
+
+export const homePageHeroHeadingListItemType = defineType({
+  name: 'homePageHeroHeadingListItem',
+  title: 'Home Page Hero Heading List Item',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'color',
+      type: 'reference',
+      to: { type: 'colorInput' }
+    }),
+    defineField({
+      name: 'text',
+      type: 'string',
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'text',
     },
   },
 })
