@@ -7,7 +7,7 @@ import Image from "next/image";
 // utils
 import cx from "classnames";
 import { urlFor } from "@/sanity/lib/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 // types
 import { SanityImg } from "@/app/types/sanity";
