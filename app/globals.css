@@ -70,6 +70,11 @@
 }
 
 @layer utilities {
+  @keyframes fadeInUp {
+    from { opacity: 0%; transform: translateY(20px) }
+    to { opacity: 100%; transform: translateY(0px) }
+  }
+
   .p-bottom-75 {
     @apply pb-[4rem] lg:pb-[75px];
   }
