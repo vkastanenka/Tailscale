@@ -4,10 +4,11 @@ import { blockContentType } from './blockContentType'
 import { categoryType } from './categoryType'
 import { postType } from './postType'
 import { authorType } from './authorType'
-import homePageTypes from './homePageType'
+import homePageTypes from './homePageTypes'
 import { imgType } from './img'
 import { companyLogoType } from './companyLogoType'
 import colorInputTypes from './colorInputType'
+import testimonialTypes from './testimonialTypes'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -18,6 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ...homePageTypes,
     imgType,
     companyLogoType,
-    ...colorInputTypes
+    ...colorInputTypes,
+    ...testimonialTypes
   ],
 }

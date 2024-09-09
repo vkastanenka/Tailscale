@@ -99,7 +99,7 @@
   }
 
   .twitter-marquee .marquee {
-    @apply items-strech;
+    @apply items-stretch;
   }
 }
 
