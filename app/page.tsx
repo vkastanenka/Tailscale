@@ -7,6 +7,7 @@ import Integrations from "./components/integrations";
 import Homelab from "./components/homelab";
 import Testimonials from "./components/testimonials";
 import Benefits from "./components/benefits";
+import Security from "./components/security";
 
 // Utilities
 import cx from "classnames";
@@ -99,123 +100,17 @@ export default async function Home() {
           accoladesList: homePageData.accoladesList,
         }}
       />
-      <Security />
+      <Security
+        sanityData={{
+          securityHeading: homePageData.securityheading,
+          securitySubheading: homePageData.securitySubheading,
+          securityImages: homePageData.securityImages,
+        }}
+      />
       <Documentation />
     </main>
   );
 }
-
-const Security = ({ ...props }): JSX.Element => {
-  const SecurityFeature = () => {
-    return (
-      <div className={cx("max-w-[150px]", "lg:w-auto", "lg:max-w-[180px]")}>
-        {/* TODO: Add Images */}
-        <div className={cx("bg-heading-black", "w-[180px]", "w-[211px]")} />
-      </div>
-    );
-  };
-
-  return (
-    <section
-      className={cx("overflow-hidden", "bg-grey-2", "p-top-75", "p-bottom-75")}
-      {...props}
-    >
-      <div className={cx("space-y-8", "md:!space-y-20", "container")}>
-        <div
-          className={cx(
-            "relative",
-            "mx-auto",
-            "flex",
-            "max-w-[1160px]",
-            "flex-col",
-            "items-center",
-            "justify-between",
-            "gap-6",
-            "gap-y-12",
-            "md-large:flex-row"
-          )}
-        >
-          <div
-            className={cx("text-left", "mx-0", "flex-1", "md:max-w-[632px]")}
-          >
-            <h2
-              className={cx(
-                "t-h2",
-                "text-black",
-                "mb-3",
-                "md:mb-6",
-                "max-w-[622px]"
-              )}
-            >{`Our commitment to security`}</h2>
-            <div
-              className={cx(
-                "t-b20",
-                "text-body-black",
-                "mb-5",
-                "lg:mb-10",
-                "max-w-[623px]"
-              )}
-            >
-              <div className={cx("content-prose")}>
-                <p>{`We are committed to always safeguarding your data. Every connection is encrypted end-to-end using WireGuard®, a modern VPN protocol designed for usability, performance, and security. Stay up-to-date on updates via our security bulletin below.`}</p>
-              </div>
-            </div>
-            <div className={cx("w-full", "xs:w-auto", "flex", "justify-start")}>
-              <div
-                className={cx(
-                  "flex",
-                  "w-full",
-                  "flex-col",
-                  "gap-y-4",
-                  "xs:w-auto",
-                  "xs:flex-row",
-                  "xs:items-center",
-                  "xs:space-x-5",
-                  "md:space-x-[30px]"
-                )}
-              >
-                <Button>{`Learn more`}</Button>
-                <Button variant="underlined">{`Security bulletins`}</Button>
-              </div>
-            </div>
-          </div>
-          <div
-            className={cx(
-              "flex",
-              "max-w-[384px]",
-              "flex-1",
-              "flex-col",
-              "gap-4",
-              "md:gap-6",
-              "md-large:flex-row"
-            )}
-          >
-            <div
-              className={cx("flex", "gap-4", "md:gap-6", "md-large:flex-col")}
-              style={{
-                transform: "translateX(0px) translateY(20px) translateZ(0px)",
-              }}
-            >
-              <SecurityFeature />
-              <SecurityFeature />
-              <SecurityFeature />
-            </div>{" "}
-            <div
-              className={cx("flex", "gap-4", "md:gap-6", "md-large:flex-col")}
-              style={{
-                transform: "translateX(0px) translateY(-20px) translateZ(0px)",
-              }}
-            >
-              <SecurityFeature />
-              <SecurityFeature />
-              <SecurityFeature />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Documentation = ({ ...props }): JSX.Element => {
   return (

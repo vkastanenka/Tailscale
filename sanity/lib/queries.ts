@@ -66,24 +66,24 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   // benefits
   benefitsHeading,
   benefitsList[]{image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}, heading, subheading},
-  accoladesList[]
+  accoladesList[],
 
   // security
-  // securityHeading,
-  // securitySubheading,
-  // securityImages[]{"url": image.asset->url, altText},
-  // // securityButton1,
-  // // securityButton2
+  securityHeading,
+  securitySubheading,
+  securityImages[]{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
+  // securityButton1,
+  // securityButton2
 
   // documentation
-  // workflowHeading,
-  // workflowSubheading,
-  // workflowImage{"url": image.asset->url, altText},
-  // // workflowButton
+  workflowHeading,
+  workflowSubheading,
+  workflowImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
+  // workflowButton
 
-  // quickstartTitle,
-  // quickstartHeading,
-  // quickstartSubheading,
-  // quickstartImage{"url": image.asset->url, altText},
-  // // quickstartButton
+  quickstartTitle,
+  quickstartHeading,
+  quickstartSubheading,
+  quickstartImage{"url": image.asset->url, altText},
+  // quickstartButton
 }`);

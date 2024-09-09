@@ -44,8 +44,9 @@ const Benefits = ({ sanityData, ...props }: Benefits): JSX.Element => {
             "md:grid-cols-3"
           )}
         >
-          {sanityData.benefitsList.map((benefit) => (
+          {sanityData.benefitsList.map((benefit, i) => (
             <a
+              key={i}
               className={cx(
                 "flex",
                 "flex-col",
@@ -108,8 +109,8 @@ const Benefits = ({ sanityData, ...props }: Benefits): JSX.Element => {
           ))}
         </div>
         <div className={cx("grid", "gap-8", "sm:grid-cols-3", "lg:gap-10")}>
-          {sanityData.accoladesList.map((accolade) => (
-            <div className={cx("text-center")}>
+          {sanityData.accoladesList.map((accolade, i) => (
+            <div key={i} className={cx("text-center")}>
               <h4 className={cx("t-h1")}>{accolade.heading}</h4>
               <div className={cx("t-b18", "mt-4", "text-subheading-black")}>
                 {accolade.subheading}

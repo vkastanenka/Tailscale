@@ -30,19 +30,19 @@ const Hero = ({ sanityData, ...props }: Home): JSX.Element => {
     text: string;
   }>(sanityData.heroHeadingList[0]);
 
-    useEffect(() => {
-      const headingListInterval = setInterval(() => {
-        setHeadingListItemIdx((prevState) =>
-          prevState === sanityData.heroHeadingList.length - 1 ? 0 : prevState + 1
-        );
-      }, 2000);
+  useEffect(() => {
+    const headingListInterval = setInterval(() => {
+      setHeadingListItemIdx((prevState) =>
+        prevState === sanityData.heroHeadingList.length - 1 ? 0 : prevState + 1
+      );
+    }, 2000);
 
-      return () => clearInterval(headingListInterval);
-    }, [sanityData.heroHeadingList.length]);
+    return () => clearInterval(headingListInterval);
+  }, [sanityData.heroHeadingList.length]);
 
-    useEffect(() => {
-      setCurrentHeadingListItem(sanityData.heroHeadingList[headingListItemIdx]);
-    }, [sanityData.heroHeadingList, headingListItemIdx]);
+  useEffect(() => {
+    setCurrentHeadingListItem(sanityData.heroHeadingList[headingListItemIdx]);
+  }, [sanityData.heroHeadingList, headingListItemIdx]);
 
   return (
     <section
@@ -218,6 +218,7 @@ const Hero = ({ sanityData, ...props }: Home): JSX.Element => {
             )}
           >
             <Image
+              priority
               alt={sanityData.heroImageDesktop.altText}
               src={urlFor(sanityData.heroImageDesktop.url).url()}
               className={cx(
@@ -231,6 +232,7 @@ const Hero = ({ sanityData, ...props }: Home): JSX.Element => {
               height={sanityData.heroImageDesktop.dimensions.height}
             />
             <Image
+              priority
               alt={sanityData.heroImageMobile.altText}
               src={urlFor(sanityData.heroImageMobile.url).url()}
               className={cx(
