@@ -280,6 +280,18 @@
     }
   }
 
+  .t-18-mono {
+    font-size: .5625rem;
+    line-height: 1.5;
+    letter-spacing: -.01125rem;
+  }
+
+  @media (min-width: 30rem) {
+    .t-18-mono {
+      font-size: 18px;
+    }
+  }
+
   .t-20 {
     font-size: 1.125rem;
     line-height: 1.35;
