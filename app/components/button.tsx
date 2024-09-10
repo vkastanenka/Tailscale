@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { AnchorHTMLAttributes } from 'react'
+import { AnchorHTMLAttributes, HTMLAttributes } from 'react'
 
 const Button = ({
   variant = 'contained',
@@ -32,10 +32,16 @@ const Button = ({
 
 export default Button
 
-const ButtonContained = ({ ...props }): JSX.Element => {
+const ButtonContained = ({
+  includeIcon = true,
+  ...props
+}: {
+  includeIcon?: boolean
+} & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   return (
     <div
       className={cx(
+        'button-contained',
         'inline-flex',
         'shrink-0',
         'border',
@@ -69,29 +75,55 @@ const ButtonContained = ({ ...props }): JSX.Element => {
       {...props}
     >
       <div>{props.children}</div>
-      <div className={cx('relative')}>
-        <span
-          className={cx('block', 'will-change-transform')}
-          style={{ opacity: 1, transform: 'none' }}
-        >
-          {/* TODO: Add SVG */}
-        </span>
-        {/* TODO: Add Animation */}
-        <span
-          className={cx(
-            'absolute',
-            'inset-0',
-            'block',
-            'will-change-transform'
-          )}
-          style={{
-            opacity: 0,
-            transform: 'translateX(-15px) translateY(0px) translateZ(0px)',
-          }}
-        >
-          {/* TODO: Add SVG */}
-        </span>
-      </div>
+      {includeIcon ? (
+        <div className={cx('relative')}>
+          <span
+            className={cx(
+              'button-contained_icon-start',
+              'block',
+              'will-change-transform',
+              'will-change-transform',
+              'transition-all'
+            )}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 18"
+              className={cx('w-4')}
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </span>
+          <span
+            className={cx(
+              'button-contained_icon-end',
+              'absolute',
+              'inset-0',
+              'block',
+              'will-change-transform',
+              'transition-all'
+            )}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 18"
+              className={cx('w-4')}
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </span>
+        </div>
+      ) : undefined}
     </div>
   )
 }

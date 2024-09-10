@@ -56,6 +56,26 @@
 }
 
 @layer components {
+.button-contained .button-contained_icon-start {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  .button-contained:hover .button-contained_icon-start {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  .button-contained .button-contained_icon-end {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  .button-contained:hover .button-contained_icon-end {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
   .container {
     @apply w-auto max-w-[1280px] mx-auto px-[20px] lg:px-[40px];
   }
