@@ -1,4 +1,4 @@
-import { defineQuery } from "next-sanity";
+import { defineQuery } from 'next-sanity'
 
 export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   title,
@@ -90,6 +90,6 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   quickstartTitle,
   quickstartHeading,
   quickstartSubheading,
-  quickstartImage{"url": image.asset->url, altText},
+  quickstartImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
   // quickstartButton
 }`)
