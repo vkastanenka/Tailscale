@@ -31,6 +31,16 @@ const homePageType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'heroButton1',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
+      name: 'heroButton2',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
       name: 'heroImageDesktop',
       type: 'img',
     }),
@@ -59,6 +69,11 @@ const homePageType = defineType({
       name: 'howItWorksSubheading',
       type: 'string',
     }),
+    defineField({
+      name: 'howItWorksButton',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
 
     // feature 1
     defineField({
@@ -76,6 +91,11 @@ const homePageType = defineType({
     defineField({
       name: 'feature1SubheadingMaxWidth',
       type: 'string',
+    }),
+    defineField({
+      name: 'feature1Button',
+      type: 'reference',
+      to: { type: 'button' },
     }),
     defineField({
       name: 'feature1Image',
@@ -100,6 +120,11 @@ const homePageType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'feature2Button',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
       name: 'feature2Image',
       type: 'img',
     }),
@@ -120,6 +145,11 @@ const homePageType = defineType({
     defineField({
       name: 'feature3SubheadingMaxWidth',
       type: 'string',
+    }),
+    defineField({
+      name: 'feature3Button',
+      type: 'reference',
+      to: { type: 'button' },
     }),
     defineField({
       name: 'feature3Image',
@@ -144,6 +174,11 @@ const homePageType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'feature4Button',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
       name: 'feature4Image',
       type: 'img',
     }),
@@ -156,6 +191,16 @@ const homePageType = defineType({
     defineField({
       name: 'workflowHeading2',
       type: 'string',
+    }),
+    defineField({
+      name: 'workflowButton1',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
+      name: 'workflowButton2',
+      type: 'reference',
+      to: { type: 'button' },
     }),
 
     // homelab
@@ -170,6 +215,16 @@ const homePageType = defineType({
     defineField({
       name: 'homelabSubheading',
       type: 'string',
+    }),
+    defineField({
+      name: 'homelabButton1',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
+      name: 'homelabButton2',
+      type: 'reference',
+      to: { type: 'button' },
     }),
     defineField({
       name: 'homelabImage',
@@ -246,6 +301,16 @@ const homePageType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'securityButton1',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
+      name: 'securityButton2',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
       name: 'securityImages',
       type: 'array',
       of: [
@@ -265,6 +330,11 @@ const homePageType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'workflowButton',
+      type: 'reference',
+      to: { type: 'button' },
+    }),
+    defineField({
       name: 'workflowImage',
       type: 'img',
     }),
@@ -275,6 +345,11 @@ const homePageType = defineType({
     defineField({
       name: 'quickstartHeading',
       type: 'string',
+    }),
+    defineField({
+      name: 'quickstartButton',
+      type: 'reference',
+      to: { type: 'button' },
     }),
     defineField({
       name: 'quickstartImage',
@@ -317,6 +392,10 @@ export const homePageBenefitType = defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'href',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       type: 'img',
     }),
@@ -333,6 +412,7 @@ export const homePageBenefitType = defineType({
     select: {
       title: 'heading',
       media: 'image.image',
+      subtitle: 'href',
     },
   },
 })
@@ -354,6 +434,7 @@ export const homePageAccoladeType = defineType({
   preview: {
     select: {
       title: 'heading',
+      subtitle: 'subheading',
     },
   },
 })

@@ -18,13 +18,7 @@ const Button = ({
   }
 
   return (
-    // TODO: Add tracking props
-    <a
-      data-track="Link Clicked"
-      data-track-properties='{"label": "Get Started"}'
-      href="https://login.tailscale.com/start"
-      {...props}
-    >
+    <a {...props}>
       <ButtonVariant>{props.children}</ButtonVariant>
     </a>
   )
@@ -181,7 +175,7 @@ const ButtonUnderlined = ({ ...props }): JSX.Element => {
           'right-0',
           'overflow-hidden',
           'h-[1.5px]',
-          'w-full',
+          'w-full'
         )}
       >
         <div
