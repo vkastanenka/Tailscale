@@ -111,7 +111,7 @@ export default async function Home() {
       />
       <Security
         sanityData={{
-          securityHeading: homePageData.securityheading,
+          securityHeading: homePageData.securityHeading,
           securitySubheading: homePageData.securitySubheading,
           securityImages: homePageData.securityImages,
         }}

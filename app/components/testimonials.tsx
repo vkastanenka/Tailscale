@@ -246,45 +246,6 @@ const Testimonials = ({ sanityData, ...props }: Testimonials): JSX.Element => {
               </div>
             </div>
           </div>
-
-          {/* <div className={cx('space-y-[45px]')}>
-            <div
-              className={cx('marquee-container', 'twitter-marquee')}
-              style={
-                {
-                  '--pause-on-hover': 'running',
-                  '--pause-on-click': 'running',
-                  '--width': '100%',
-                  '--transform': 'none',
-                } as React.CSSProperties
-              }
-            >
-              <div
-                className={cx('marquee')}
-                style={
-                  {
-                    '--play': 'running',
-                    '--direction': 'reverse',
-                    '--duration': '121s',
-                    '--delay': '0s',
-                    '--iteration-count': 'infinite',
-                    '--min-width': '100%',
-                  } as React.CSSProperties
-                }
-              >
-                <div className={cx('initial-child-container')}>
-                  <div
-                    className={cx('child')}
-                    style={
-                      {
-                        '--transform': 'none',
-                      } as React.CSSProperties
-                    }
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>
