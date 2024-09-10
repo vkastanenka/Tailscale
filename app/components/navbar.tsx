@@ -71,7 +71,71 @@ export const navLinks = [
       },
     ],
   },
-  { _type: 'link', text: 'Solutions', href: '/' },
+  {
+    _type: 'dropdown',
+    text: 'Solutions',
+    href: '/',
+    columns: [
+      {
+        heading: 'By use-case',
+        links: [
+          {
+            text: 'Remote Access',
+            href: 'https://tailscale.com/use-cases/remote-access',
+          },
+          {
+            text: 'Multi-Cloud Networking',
+            href: 'https://tailscale.com/use-cases/multi-cloud-networking',
+          },
+          {
+            text: 'Kubernetes Networking',
+            href: 'https://tailscale.com/use-cases/kubernetes',
+          },
+          {
+            text: 'Edge and IoT Deployments',
+            href: 'https://tailscale.com/use-cases/iot',
+          },
+          {
+            text: 'Zero Trust Networking',
+            href: 'https://tailscale.com/use-cases/zero-trust-networking',
+          },
+          {
+            text: 'AI Workloads',
+            href: 'https://tailscale.com/use-cases/ai',
+          },
+          {
+            text: 'Secure Saas',
+            href: 'https://tailscale.com/use-cases/secure-saas',
+          },
+          {
+            text: 'Business VPN',
+            href: 'https://tailscale.com/use-cases/business-vpn',
+          },
+          {
+            text: 'Homelab',
+            href: 'https://tailscale.com/use-cases/homelab',
+          },
+        ],
+      },
+      {
+        heading: 'By role',
+        links: [
+          {
+            text: 'DevOps',
+            href: 'https://tailscale.com/solutions/devops',
+          },
+          {
+            text: 'IT',
+            href: 'https://tailscale.com/solutions/it',
+          },
+          {
+            text: 'Security',
+            href: 'https://tailscale.com/solutions/security',
+          },
+        ],
+      },
+    ],
+  },
   {
     _type: 'link',
     text: 'Enterprise',
@@ -95,6 +159,7 @@ const Navbar = ({
   setMobileNavVisible: Dispatch<SetStateAction<boolean>>
 }) => {
   const scrollY = useScrolled()
+  const [activeNavItemIdx, setActiveNavItemIdx] = useState<number>()
 
   return (
     <header
@@ -251,7 +316,15 @@ const Navbar = ({
           </Link>
           <nav className={cx('relative', 'hidden', 'lg:flex', 'lg:gap-6')}>
             {navLinks.map((link, i) => {
-              return <NavItem key={i} navItemData={link} />
+              return (
+                <NavItem
+                  key={i}
+                  navItemIdx={i}
+                  navItemData={link}
+                  activeNavItemIdx={activeNavItemIdx}
+                  setActiveNavItemIdx={setActiveNavItemIdx}
+                />
+              )
             })}
           </nav>
         </div>
@@ -370,7 +443,18 @@ export interface NavItemData {
   columns?: { heading: string; links: { text: string; href: string }[] }[]
 }
 
-const NavItem = ({ navItemData, ...props }: { navItemData: NavItemData }) => {
+const NavItem = ({
+  navItemIdx,
+  activeNavItemIdx,
+  setActiveNavItemIdx,
+  navItemData,
+  ...props
+}: {
+  navItemIdx: number
+  activeNavItemIdx?: number
+  setActiveNavItemIdx: Dispatch<SetStateAction<number | undefined>>
+  navItemData: NavItemData
+}) => {
   const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false)
 
   const navItemStyle = cx(
@@ -386,6 +470,12 @@ const NavItem = ({ navItemData, ...props }: { navItemData: NavItemData }) => {
     'hover:text-[#302c2c]'
   )
 
+  useEffect(() => {
+    if (activeNavItemIdx !== navItemIdx) {
+      setDropdownIsActive(false)
+    }
+  }, [activeNavItemIdx, navItemIdx])
+
   if (navItemData._type === 'dropdown') {
     return (
       <div
@@ -393,12 +483,15 @@ const NavItem = ({ navItemData, ...props }: { navItemData: NavItemData }) => {
         aria-haspopup="true"
         tabIndex={0}
         className={navItemStyle}
-        onClick={() => setDropdownIsActive((prevState) => !prevState)}
+        onClick={() => {
+          setActiveNavItemIdx(navItemIdx)
+          setDropdownIsActive((prevState) => !prevState)
+        }}
         {...props}
       >
         <span>{navItemData.text}</span>
         <NavItemUnderline />
-        {dropdownIsActive ? (
+        {dropdownIsActive && activeNavItemIdx === navItemIdx ? (
           <div
             className={cx(
               'left-[-110px]',
