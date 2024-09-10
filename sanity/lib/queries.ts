@@ -10,8 +10,8 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   heroSubheading,
   heroImageDesktop{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText, },
   heroImageMobile{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
-  // heroCompanyTrustHeading,
-  // companyLogos[]->{"url": image.image.asset->url, "altText": image.altText},
+  heroCompanyTrustHeading,
+  companyLogos[]->{"url": image.image.asset->url, "dimensions": image.image.asset->metadata.dimensions, "altText": image.altText},
 
   // howItWorks
   howItWorksHeading,
@@ -63,6 +63,12 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   // homelabButton2
   homelabImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
+  // testimonials
+  testimonialsHeading,
+  testimonialsList1[]->{..., "userImage": userImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},
+  testimonialsList2[]->{..., "userImage": userImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},
+  testimonialsList3[]->{..., "userImage": userImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},
+
   // benefits
   benefitsHeading,
   benefitsList[]{image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}, heading, subheading},
@@ -86,4 +92,4 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   quickstartSubheading,
   quickstartImage{"url": image.asset->url, altText},
   // quickstartButton
-}`);
+}`)
