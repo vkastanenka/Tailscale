@@ -36,13 +36,6 @@
   --red-1: rgb(146, 27, 16);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 @layer base {
   *,
   ::after,
@@ -289,6 +282,17 @@
   @media (min-width: 30rem) {
     .t-18-mono {
       font-size: 18px;
+    }
+  }
+
+  .t-14 {
+    font-size: .875rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 48rem) {
+    .t-14 {
+      font-size: calc(.875rem + 0vw);
     }
   }
 

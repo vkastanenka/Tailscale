@@ -9,10 +9,14 @@ import { AnchorHTMLAttributes, HTMLAttributes } from 'react'
 import { Url } from 'next/dist/shared/lib/router/router'
 
 const Button = ({
+  includeIcon = true,
   variant = 'contained',
+  buttonStyle,
   ...props
 }: {
+  includeIcon?: boolean
   variant?: 'contained' | 'underlined'
+  buttonStyle?: string
 } & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   let ButtonVariant = ButtonContained
 
@@ -26,7 +30,9 @@ const Button = ({
 
   return (
     <Link href={props.href as Url} {...props}>
-      <ButtonVariant>{props.children}</ButtonVariant>
+      <ButtonVariant buttonStyle={buttonStyle} includeIcon={includeIcon}>
+        {props.children}
+      </ButtonVariant>
     </Link>
   )
 }
@@ -34,22 +40,23 @@ const Button = ({
 export default Button
 
 const ButtonContained = ({
+  buttonStyle,
   includeIcon = true,
   ...props
 }: {
+  buttonStyle?: string
   includeIcon?: boolean
 } & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   return (
     <div
       className={cx(
         'button-contained',
-        'inline-flex',
+        'flex',
+        'xs:inline-flex',
         'shrink-0',
         'border',
         'transition-colors',
         'duration-200',
-        'w-full',
-        'xs:w-auto',
         'items-center',
         'justify-center',
         'text-center',
@@ -71,7 +78,8 @@ const ButtonContained = ({
         'border-heading-black',
         'text-white',
         'hover:bg-black-4',
-        'hover:border-black-4'
+        'hover:border-black-4',
+        buttonStyle
       )}
       {...props}
     >
@@ -129,7 +137,14 @@ const ButtonContained = ({
   )
 }
 
-const ButtonUnderlined = ({ ...props }): JSX.Element => {
+const ButtonUnderlined = ({
+  buttonStyle,
+  includeIcon = true,
+  ...props
+}: {
+  buttonStyle?: string
+  includeIcon?: boolean
+} & HTMLAttributes<HTMLDivElement>): JSX.Element => {
   return (
     <div
       className={cx(
@@ -149,7 +164,8 @@ const ButtonUnderlined = ({ ...props }): JSX.Element => {
         'font-medium',
         'leading-[1.43]',
         'tracking-[-0.17px]',
-        'text-black'
+        'text-black',
+        buttonStyle
       )}
       {...props}
     >
