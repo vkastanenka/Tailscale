@@ -124,6 +124,20 @@
 }
 
 @layer utilities {
+  @keyframes bounceX {
+    0% {
+        transform: translateX(0)
+    }
+
+    50% {
+      transform: translateX(2px)
+    }
+    
+    100% {
+      transform: translateX(0)
+    }
+  }
+
   @keyframes fadeInUp {
     from { opacity: 0%; transform: translateY(20px) }
     to { opacity: 100%; transform: translateY(0px) }

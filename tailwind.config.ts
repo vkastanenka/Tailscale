@@ -31,6 +31,9 @@ const config: Config = {
       xxs: '320px',
     },
     extend: {
+      animation: {
+        'bounceX': 'bounceX 1s ease-in-out infinite',
+      },
       colors: {
         black: {
           DEFAULT: 'var(--black)',

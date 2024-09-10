@@ -160,7 +160,18 @@ const ButtonUnderlined = ({ ...props }): JSX.Element => {
           'group-hover:animate-bounceX'
         )}
       >
-        {/* TODO: Add SVG */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 18"
+          className={cx('w-4')}
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
+            fill="currentColor"
+          ></path>
+        </svg>
       </span>
       <div
         className={cx(
@@ -168,10 +179,9 @@ const ButtonUnderlined = ({ ...props }): JSX.Element => {
           'bottom-[-2px]',
           'left-0',
           'right-0',
-          'h-1.5px',
-          'w-full',
           'overflow-hidden',
-          'rounded'
+          'h-[1.5px]',
+          'w-full',
         )}
       >
         <div
