@@ -50,12 +50,12 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   feature4Image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   // workflow
-  workflowHeading1,
-  workflowHeading2,
-  // workflowIcons1
-  // workflowIcons2
-  workflowButton1->,
-  workflowButton2->,
+  integrationsHeading1,
+  integrationsHeading2,
+  integrationsIcons1[]{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
+  integrationsIcons2[]{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
+  integrationsButton1->,
+  integrationsButton2->,
 
   // homelab
   homelabTitle,

@@ -183,22 +183,40 @@ const homePageType = defineType({
       type: 'img',
     }),
 
-    // workflow
+    // integrations
     defineField({
-      name: 'workflowHeading1',
+      name: 'integrationsHeading1',
       type: 'string',
     }),
     defineField({
-      name: 'workflowHeading2',
+      name: 'integrationsHeading2',
       type: 'string',
     }),
     defineField({
-      name: 'workflowButton1',
+      name: 'integrationsIcons1',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'img',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'integrationsIcons2',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'img',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'integrationsButton1',
       type: 'reference',
       to: { type: 'button' },
     }),
     defineField({
-      name: 'workflowButton2',
+      name: 'integrationsButton2',
       type: 'reference',
       to: { type: 'button' },
     }),

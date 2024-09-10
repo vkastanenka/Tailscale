@@ -19,7 +19,7 @@ import { HOME_PAGE_QUERY } from '@/sanity/lib/queries'
 export default async function Home() {
   const homePageData = await client.fetch(HOME_PAGE_QUERY)
 
-  console.log(homePageData.benefitsList)
+  // console.log(homePageData.integrationsIcons1)
 
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
@@ -89,10 +89,12 @@ export default async function Home() {
       </Feature>
       <Integrations
         sanityData={{
-          integrationsHeading1: homePageData.workflowHeading1,
-          integrationsHeading2: homePageData.workflowHeading2,
-          integrationsButton1: homePageData.workflowButton1,
-          integrationsButton2: homePageData.workflowButton2,
+          integrationsHeading1: homePageData.integrationsHeading1,
+          integrationsHeading2: homePageData.integrationsHeading2,
+          integrationsIcons1: homePageData.integrationsIcons1,
+          integrationsIcons2: homePageData.integrationsIcons2,
+          integrationsButton1: homePageData.integrationsButton1,
+          integrationsButton2: homePageData.integrationsButton2,
         }}
       />
       <Homelab
