@@ -4,10 +4,14 @@ import Button from './button'
 // utilities
 import cx from 'classnames'
 
+// types
+import { SanityButton } from '../types/sanity'
+
 interface HowItWorks {
   sanityData: {
     howItWorksHeading: string
     howItWorksSubheading: string
+    howItWorksButton: SanityButton
   }
 }
 
@@ -71,9 +75,11 @@ const HowItWorks = ({ sanityData, ...props }: HowItWorks): JSX.Element => {
               )}
             >
               <Button
-                href="https://tailscale.com/blog/how-tailscale-works"
+                href={sanityData.howItWorksButton.href}
                 variant="underlined"
-              >{`How it works`}</Button>
+              >
+                {sanityData.howItWorksButton.text}
+              </Button>
             </div>
           </div>
         </div>

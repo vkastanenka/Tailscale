@@ -10,7 +10,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { useEffect, useState } from 'react'
 
 // types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@/app/types/sanity'
 
 interface Home {
   sanityData: {
@@ -18,6 +18,8 @@ interface Home {
     heroHeading2: string
     heroHeadingList: { hex: string; text: string }[]
     heroSubheading: string
+    heroButton1: SanityButton
+    heroButton2: SanityButton
     heroImageDesktop: SanityImg
     heroImageMobile: SanityImg
     heroCompanyTrustHeading: string
@@ -199,11 +201,15 @@ const Hero = ({ sanityData, ...props }: Home): JSX.Element => {
                       'md:space-x-[30px]'
                     )}
                   >
-                    <Button href="https://login.tailscale.com/start">{`Get Started`}</Button>
+                    <Button href={sanityData.heroButton1.href}>
+                      {sanityData.heroButton1.text}
+                    </Button>
                     <Button
-                      href="https://tailscale.com/contact/sales"
+                      href={sanityData.heroButton2.href}
                       variant="underlined"
-                    >{`Contact Sales`}</Button>
+                    >
+                      {sanityData.heroButton2.text}
+                    </Button>
                   </div>
                 </div>
               </div>

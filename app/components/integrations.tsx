@@ -4,10 +4,15 @@ import Button from './button'
 // utils
 import cx from 'classnames'
 
+// types
+import { SanityButton } from '../types/sanity'
+
 interface Integrations {
   sanityData: {
     integrationsHeading1: string
     integrationsHeading2: string
+    integrationsButton1: SanityButton
+    integrationsButton2: SanityButton
   }
 }
 
@@ -58,11 +63,15 @@ const Integrations = ({ sanityData, ...props }: Integrations): JSX.Element => {
                 // 'md:-space-x-[30px]'
               )}
             >
-              <Button href="https://tailscale.com/integrations?category=operating-systems-(os)">{`Operating systems`}</Button>
+              <Button href={sanityData.integrationsButton1.href}>
+                {sanityData.integrationsButton1.text}
+              </Button>
               <Button
-                href="https://tailscale.com/integrations?category=identity-providers#identity-providers"
+                href={sanityData.integrationsButton2.href}
                 variant="underlined"
-              >{`Identity providers`}</Button>
+              >
+                {sanityData.integrationsButton2.text}
+              </Button>
             </div>
           </div>
         </div>

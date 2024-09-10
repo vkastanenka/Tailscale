@@ -1,5 +1,12 @@
+// components
+import Link from 'next/link'
+
+// utilities
 import cx from 'classnames'
+
+// types
 import { AnchorHTMLAttributes, HTMLAttributes } from 'react'
+import { Url } from 'next/dist/shared/lib/router/router'
 
 const Button = ({
   variant = 'contained',
@@ -18,9 +25,9 @@ const Button = ({
   }
 
   return (
-    <a {...props}>
+    <Link href={props.href as Url} {...props}>
       <ButtonVariant>{props.children}</ButtonVariant>
-    </a>
+    </Link>
   )
 }
 
@@ -86,8 +93,8 @@ const ButtonContained = ({
               className={cx('w-4')}
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
                 fill="currentColor"
               ></path>
@@ -109,8 +116,8 @@ const ButtonContained = ({
               className={cx('w-4')}
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
                 fill="currentColor"
               ></path>
@@ -160,8 +167,8 @@ const ButtonUnderlined = ({ ...props }): JSX.Element => {
           className={cx('w-4')}
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
             fill="currentColor"
           ></path>

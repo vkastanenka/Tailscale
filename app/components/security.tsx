@@ -3,7 +3,7 @@ import Button from './button'
 import Image from 'next/image'
 
 // Types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@/app/types/sanity'
 
 // Utilities
 import cx from 'classnames'
@@ -13,6 +13,8 @@ interface Security {
   sanityData: {
     securityHeading: string
     securitySubheading: string
+    securityButton1: SanityButton
+    securityButton2: SanityButton
     securityImages: SanityImg[]
   }
 }
@@ -86,8 +88,15 @@ const Security = ({ sanityData, ...props }: Security): JSX.Element => {
                   'md:space-x-[30px]'
                 )}
               >
-                <Button>{`Learn more`}</Button>
-                <Button variant="underlined">{`Security bulletins`}</Button>
+                <Button href={sanityData.securityButton1.href}>
+                  {sanityData.securityButton1.text}
+                </Button>
+                <Button
+                  variant="underlined"
+                  href={sanityData.securityButton2.href}
+                >
+                  {sanityData.securityButton2.text}
+                </Button>
               </div>
             </div>
           </div>

@@ -7,13 +7,15 @@ import cx from 'classnames'
 import { urlFor } from '@/sanity/lib/image'
 
 // types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@/app/types/sanity'
 
 interface Homelab {
   sanityData: {
     homelabTitle: string
     homelabHeading: string
     homelabSubheading: string
+    homelabButton1: SanityButton
+    homelabButton2: SanityButton
     homelabImage: SanityImg
   }
 }
@@ -64,11 +66,15 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
                 'md:space-x-[30px]'
               )}
             >
-              <Button href="https://login.tailscale.com/start">{`Download for free`}</Button>
+              <Button href={sanityData.homelabButton1.href}>
+                {sanityData.homelabButton1.text}
+              </Button>
               <Button
-                href="https://tailscale.com/use-cases/homelab"
+                href={sanityData.homelabButton2.href}
                 variant="underlined"
-              >{`Learn more`}</Button>
+              >
+                {sanityData.homelabButton2.text}
+              </Button>
             </div>
           </div>
         </div>

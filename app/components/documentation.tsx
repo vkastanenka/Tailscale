@@ -1,22 +1,25 @@
 // components
 import Button from './button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // utils
 import cx from 'classnames'
 import { urlFor } from '@/sanity/lib/image'
 
 // types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@/app/types/sanity'
 
 interface Documentation {
   sanityData: {
     workflowHeading: string
     workflowSubheading: string
+    workflowButton: SanityButton
     workflowImage: SanityImg
     quickstartTitle: string
     quickstartHeading: string
     quickstartSubheading: string
+    quickstartButton: SanityButton
     quickstartImage: SanityImg
   }
 }
@@ -68,7 +71,9 @@ const Documentation = ({
                     {sanityData.workflowSubheading}
                   </div>
                   <div className={cx('mt-8')}>
-                    <Button>{`See docs`}</Button>
+                    <Button href={sanityData.workflowButton.href}>
+                      {sanityData.workflowButton.text}
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -83,9 +88,9 @@ const Documentation = ({
             </div>
           </div>
           <div className={cx('flex-[0.35]', 'md:max-w-[400px]')}>
-            <a
+            <Link
               className={cx('group', 'w-full')}
-              href="https://tailscale.com/kb/1017/install"
+              href={sanityData.quickstartButton.href}
             >
               <div
                 className={cx(
@@ -141,21 +146,32 @@ const Documentation = ({
                     )}
                   >
                     <span className={cx('transition-colors')}>
-                      {sanityData.quickstartSubheading}
+                      {sanityData.quickstartButton.text}
                     </span>
-                    {/* <span
-                        className={cx(
-                          'block',
-                          'will-change-transform',
-                          'group-hover:animate-bounceX'
-                        )}
+                    <span
+                      className={cx(
+                        'block',
+                        'will-change-transform',
+                        'group-hover:animate-bounceX'
+                      )}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 18"
+                        className={cx('w-4')}
                       >
-                        <svg>svg</svg>
-                      </span> */}
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

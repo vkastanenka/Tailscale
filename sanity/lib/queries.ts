@@ -8,6 +8,8 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   heroHeading2,
   heroHeadingList[]{"hex": color->color.hex, text},
   heroSubheading,
+  heroButton1->,
+  heroButton2->,
   heroImageDesktop{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText, },
   heroImageMobile{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
   heroCompanyTrustHeading,
@@ -16,35 +18,35 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   // howItWorks
   howItWorksHeading,
   howItWorksSubheading,
-  // howItWorksButton
+  howItWorksButton->,
 
   // features
   feature1Heading,
   feature1HeadingMaxWidth,
   feature1Subheading,
   feature1SubheadingMaxWidth,
-  // feature1Button
+  feature1Button->,
   feature1Image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   feature2Heading,
   feature2HeadingMaxWidth,
   feature2Subheading,
   feature2SubheadingMaxWidth,
-  // feature2Button
+  feature2Button->,
   feature2Image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   feature3Heading,
   feature3HeadingMaxWidth,
   feature3Subheading,
   feature3SubheadingMaxWidth,
-  // feature3Button
+  feature3Button->,
   feature3Image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   feature4Heading,
   feature4HeadingMaxWidth,
   feature4Subheading,
   feature4SubheadingMaxWidth,
-  // feature4Button
+  feature4Button->,
   feature4Image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   // workflow
@@ -52,15 +54,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   workflowHeading2,
   // workflowIcons1
   // workflowIcons2
-  // workflowButton1,
-  // workflowButton2
+  workflowButton1->,
+  workflowButton2->,
 
   // homelab
   homelabTitle,
   homelabHeading,
   homelabSubheading,
-  // homelabButton1
-  // homelabButton2
+  homelabButton1->,
+  homelabButton2->,
   homelabImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
 
   // testimonials
@@ -71,25 +73,25 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
 
   // benefits
   benefitsHeading,
-  benefitsList[]{image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}, heading, subheading},
+  benefitsList[]{..., image{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},
   accoladesList[],
 
   // security
   securityHeading,
   securitySubheading,
+  securityButton1->,
+  securityButton2->,
   securityImages[]{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
-  // securityButton1,
-  // securityButton2
 
   // documentation
   workflowHeading,
   workflowSubheading,
+  workflowButton->,
   workflowImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
-  // workflowButton
 
   quickstartTitle,
   quickstartHeading,
   quickstartSubheading,
+  quickstartButton->,
   quickstartImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
-  // quickstartButton
 }`)

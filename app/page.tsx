@@ -19,7 +19,7 @@ import { HOME_PAGE_QUERY } from '@/sanity/lib/queries'
 export default async function Home() {
   const homePageData = await client.fetch(HOME_PAGE_QUERY)
 
-  // console.log(homePageData)
+  console.log(homePageData.benefitsList)
 
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
@@ -29,6 +29,8 @@ export default async function Home() {
           heroHeading2: homePageData.heroHeading2,
           heroHeadingList: homePageData.heroHeadingList,
           heroSubheading: homePageData.heroSubheading,
+          heroButton1: homePageData.heroButton1,
+          heroButton2: homePageData.heroButton2,
           heroImageDesktop: homePageData.heroImageDesktop,
           heroImageMobile: homePageData.heroImageMobile,
           heroCompanyTrustHeading: homePageData.heroCompanyTrustHeading,
@@ -39,6 +41,7 @@ export default async function Home() {
         sanityData={{
           howItWorksHeading: homePageData.howItWorksHeading,
           howItWorksSubheading: homePageData.howItWorksSubheading,
+          howItWorksButton: homePageData.howItWorksButton,
         }}
       />
       <Feature
@@ -47,6 +50,7 @@ export default async function Home() {
           featureHeadingMaxWidth: homePageData.feature1HeadingMaxWidth,
           featureSubheading: homePageData.feature1Subheading,
           featureSubheadingMaxWidth: homePageData.feature1SubheadingMaxWidth,
+          featureButton: homePageData.feature1Button,
           featureImage: homePageData.feature1Image,
         }}
       />
@@ -56,6 +60,7 @@ export default async function Home() {
           featureHeadingMaxWidth: homePageData.feature2HeadingMaxWidth,
           featureSubheading: homePageData.feature2Subheading,
           featureSubheadingMaxWidth: homePageData.feature2SubheadingMaxWidth,
+          featureButton: homePageData.feature2Button,
           featureImage: homePageData.feature2Image,
         }}
       />
@@ -65,6 +70,7 @@ export default async function Home() {
           featureHeadingMaxWidth: homePageData.feature3HeadingMaxWidth,
           featureSubheading: homePageData.feature3Subheading,
           featureSubheadingMaxWidth: homePageData.feature3SubheadingMaxWidth,
+          featureButton: homePageData.feature3Button,
           featureImage: homePageData.feature3Image,
         }}
       />
@@ -74,6 +80,7 @@ export default async function Home() {
           featureHeadingMaxWidth: homePageData.feature4HeadingMaxWidth,
           featureSubheading: homePageData.feature4Subheading,
           featureSubheadingMaxWidth: homePageData.feature4SubheadingMaxWidth,
+          featureButton: homePageData.feature4Button,
           featureImage: homePageData.feature4Image,
         }}
         className={cx('relative')}
@@ -84,6 +91,8 @@ export default async function Home() {
         sanityData={{
           integrationsHeading1: homePageData.workflowHeading1,
           integrationsHeading2: homePageData.workflowHeading2,
+          integrationsButton1: homePageData.workflowButton1,
+          integrationsButton2: homePageData.workflowButton2,
         }}
       />
       <Homelab
@@ -91,6 +100,8 @@ export default async function Home() {
           homelabHeading: homePageData.homelabHeading,
           homelabImage: homePageData.homelabImage,
           homelabSubheading: homePageData.homelabSubheading,
+          homelabButton1: homePageData.homelabButton1,
+          homelabButton2: homePageData.homelabButton2,
           homelabTitle: homePageData.homelabTitle,
         }}
       />
@@ -113,6 +124,8 @@ export default async function Home() {
         sanityData={{
           securityHeading: homePageData.securityHeading,
           securitySubheading: homePageData.securitySubheading,
+          securityButton1: homePageData.securityButton1,
+          securityButton2: homePageData.securityButton2,
           securityImages: homePageData.securityImages,
         }}
       />
@@ -120,10 +133,12 @@ export default async function Home() {
         sanityData={{
           workflowHeading: homePageData.workflowHeading,
           workflowSubheading: homePageData.workflowSubheading,
+          workflowButton: homePageData.workflowButton,
           workflowImage: homePageData.workflowImage,
           quickstartTitle: homePageData.quickstartTitle,
           quickstartHeading: homePageData.quickstartHeading,
           quickstartSubheading: homePageData.quickstartSubheading,
+          quickstartButton: homePageData.quickstartButton,
           quickstartImage: homePageData.quickstartImage,
         }}
       />
