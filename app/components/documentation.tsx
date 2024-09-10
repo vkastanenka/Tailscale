@@ -154,3 +154,5 @@ const Documentation = ({
     </section>
   );
 };
+
+export default Documentation
