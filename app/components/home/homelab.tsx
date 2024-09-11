@@ -25,7 +25,6 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
 
   return (
     <section
-      ref={ref}
       className={cx('overflow-hidden', 'p-top-0', 'p-bottom-0')}
       {...props}
     >
@@ -82,7 +81,7 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
           </div>
         </div>
         <div className={cx('h-full', 'w-full')}>
-          <div className={cx('w-full')}>
+          <div className={cx('w-full')} ref={ref}>
             <svg
               width="100%"
               height="100%"
@@ -104,7 +103,7 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
                 className={cx(
                   inView ? 'opacity-1' : 'opacity-0',
                   'duration-1000',
-                  'delay-100'
+                  'delay-300'
                 )}
               ></ellipse>
               <path
@@ -118,7 +117,7 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
                 className={cx(
                   inView ? 'opacity-1' : 'opacity-0',
                   'duration-1000',
-                  'delay-300'
+                  'delay-500'
                 )}
               ></path>
               <path
@@ -132,7 +131,7 @@ const Homelab = ({ sanityData, ...props }: Homelab): JSX.Element => {
                 className={cx(
                   inView ? 'opacity-1' : 'opacity-0',
                   'duration-1000',
-                  'delay-500'
+                  'delay-700'
                 )}
               ></path>
               <rect
