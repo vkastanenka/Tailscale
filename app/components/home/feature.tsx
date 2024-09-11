@@ -37,7 +37,15 @@ const Feature = ({
       className={cx('overflow-hidden', 'p-bottom-190', className)}
       {...props}
     >
-      <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
+      <div
+        className={cx(
+          'space-y-8',
+          'md:!space-y-20',
+          'container',
+          'relative',
+          'z-[5]'
+        )}
+      >
         <div
           ref={ref}
           className={cx(
@@ -118,7 +126,8 @@ export const FeatureGradient = ({ ...props }): JSX.Element => {
         'w-full',
         'bg-gradient-to-b',
         'from-white',
-        'to-grey-1'
+        'to-grey-1',
+        'z-0'
       )}
       {...props}
     />
