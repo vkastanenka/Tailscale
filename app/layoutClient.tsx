@@ -1,10 +1,10 @@
 'use client'
 
 // components
-import Navbar from '@components/navbar'
-import MobileNav from '@components/mobileNav'
-import LayoutCta from '@components/layoutCta'
-import Footer from '@components/footer'
+import Navbar from '@components/layout/navbar'
+import MobileNav from '@components/layout/mobileNav'
+import LayoutCta from '@components/layout/layoutCta'
+import Footer from '@components/layout/footer'
 
 // utils
 import cx from 'classnames'

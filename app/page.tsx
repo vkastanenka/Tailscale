@@ -1,13 +1,13 @@
 // Components
-import Hero from '@components/hero'
-import HowItWorks from '@components/howItWorks'
-import Feature, { FeatureGradient } from '@components/feature'
-import Integrations from '@components/integrations'
-import Homelab from '@components/homelab'
-import Testimonials from '@components/testimonials'
-import Benefits from '@components/benefits'
-import Security from '@components/security'
-import Documentation from '@components/documentation'
+import Hero from '@components/home/hero'
+import HowItWorks from '@components/home/howItWorks'
+import Feature, { FeatureGradient } from '@components/home/feature'
+import Integrations from '@components/home/integrations'
+import Homelab from '@components/home/homelab'
+import Testimonials from '@components/home/testimonials'
+import Benefits from '@components/home/benefits'
+import Security from '@components/home/security'
+import Documentation from '@components/home/documentation'
 
 // Utilities
 import cx from 'classnames'
