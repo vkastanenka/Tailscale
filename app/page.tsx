@@ -19,8 +19,6 @@ import { HOME_PAGE_QUERY } from '@/sanity/lib/queries'
 export default async function Home() {
   const homePageData = await client.fetch(HOME_PAGE_QUERY)
 
-  // console.log(homePageData.integrationsIcons1)
-
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>
       <Hero

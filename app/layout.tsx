@@ -22,8 +22,6 @@ export default async function RootLayout({
 }>) {
   const layoutData = await client.fetch(LAYOUT_QUERY)
 
-  console.log(layoutData)
-
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
