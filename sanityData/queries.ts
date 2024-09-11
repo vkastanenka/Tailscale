@@ -64,7 +64,6 @@ export const HOME_PAGE_QUERY = `*[_type == "homePage"][0]{
   homelabSubheading,
   homelabButton1->,
   homelabButton2->,
-  homelabImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText},
   testimonialsHeading,
   testimonialsList1[]->{..., "userImage": userImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},
   testimonialsList2[]->{..., "userImage": userImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText}},

@@ -98,7 +98,6 @@ export default async function Home() {
       <Homelab
         sanityData={{
           homelabHeading: homePageData.homelabHeading,
-          homelabImage: homePageData.homelabImage,
           homelabSubheading: homePageData.homelabSubheading,
           homelabButton1: homePageData.homelabButton1,
           homelabButton2: homePageData.homelabButton2,
