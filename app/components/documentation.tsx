@@ -1,14 +1,14 @@
 // components
-import Button from './button'
+import Button from '@components/button'
 import Image from 'next/image'
 import Link from 'next/link'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 
 // types
-import { SanityButton, SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@typescriptDefs/sanity'
 
 interface Documentation {
   sanityData: {
@@ -29,10 +29,7 @@ const Documentation = ({
   ...props
 }: Documentation): JSX.Element => {
   return (
-    <section
-      className={cx('overflow-hidden', 'p-top-175')}
-      {...props}
-    >
+    <section className={cx('overflow-hidden', 'p-top-175')} {...props}>
       <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>
         <div
           className={cx(

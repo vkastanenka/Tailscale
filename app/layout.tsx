@@ -1,14 +1,14 @@
 // components
-import LayoutClient from './layoutClient'
+import LayoutClient from '@app/layoutClient'
 
 // Utilities
 import type { Metadata } from 'next'
-import { inter } from './fonts'
-import './globals.css'
+import { inter } from '@fonts/index'
+import '@app/globals.css'
 
 // Sanity
-import { sanityClient } from '../sanity/client'
-import { LAYOUT_QUERY } from '../sanity/queries'
+import { sanityClient } from '@sanityData/client'
+import { LAYOUT_QUERY } from '@sanityData/queries'
 
 export const metadata: Metadata = {
   title: 'Create Next App',

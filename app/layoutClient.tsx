@@ -1,17 +1,17 @@
 'use client'
 
 // components
-import Navbar from './components/navbar'
-import MobileNav from './components/mobileNav'
-import LayoutCta from './components/layoutCta'
-import Footer from './components/footer'
+import Navbar from '@components/navbar'
+import MobileNav from '@components/mobileNav'
+import LayoutCta from '@components/layoutCta'
+import Footer from '@components/footer'
 
 // utils
 import cx from 'classnames'
 import { useState, useEffect, HTMLAttributes } from 'react'
 
 // types
-import { SanityButton, SanityImg, SanityNavbarDropdown } from './types/sanity'
+import { SanityButton, SanityImg, SanityNavbarDropdown } from '@typescriptDefs/sanity'
 
 interface LayoutClient {
   afterButtons: SanityButton[]

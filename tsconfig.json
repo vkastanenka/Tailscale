@@ -18,7 +18,13 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@*": ["./*"],
+      "@app/*": ["./app/*"],
+      "@components/*": ["./app/components/*"],
+      "@fonts/*": ["./app/fonts/*"],
+      "@typescriptDefs/*": ["./app/typescriptDefs/*"],
+      "@utilities/*": ["./app/utilities/*"],
+      "@sanityData/*": ["./sanityData/*"],
     },
     "target": "ES2017"
   },

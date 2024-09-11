@@ -1,13 +1,13 @@
 // Components
-import Button from './button'
+import Button from '@components//button'
 import Image from 'next/image'
 
 // Types
-import { SanityButton, SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@typescriptDefs/sanity'
 
 // Utilities
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 
 interface Security {
   sanityData: {

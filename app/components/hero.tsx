@@ -1,16 +1,16 @@
 'use client'
 
 // components
-import Button from './button'
+import Button from '@components/button'
 import Image from 'next/image'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 import { useEffect, useState } from 'react'
 
 // types
-import { SanityButton, SanityImg } from '@/app/types/sanity'
+import { SanityButton, SanityImg } from '@typescriptDefs/sanity'
 
 interface Home {
   sanityData: {

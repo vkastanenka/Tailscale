@@ -1,17 +1,17 @@
 'use client'
 
 // components
-import Button from './button'
+import Button from '@components/button'
 import Link from 'next/link'
 
 // utils
 import cx from 'classnames'
 import { useState, useEffect } from 'react'
-import useScrolled from '../utilities/useScrolled'
+import useScrolled from '@utilities/useScrolled'
 
 // types
 import { Dispatch, SetStateAction } from 'react'
-import { SanityNavbarDropdown, SanityButton } from '../types/sanity'
+import { SanityNavbarDropdown, SanityButton } from '@typescriptDefs/sanity'
 
 const Navbar = ({
   mobileNavIsVisible,

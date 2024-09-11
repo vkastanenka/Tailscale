@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 
 // types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityImg } from '@typescriptDefs/sanity'
 
 interface Benefits {
   sanityData: {

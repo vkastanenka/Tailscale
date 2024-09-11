@@ -1,13 +1,13 @@
 // components
-import Button from './button'
+import Button from '@components/button'
 import Image from 'next/image'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 
 // types
-import { SanityButton, SanityImg } from '../types/sanity'
+import { SanityButton, SanityImg } from '@typescriptDefs/sanity'
 
 interface Integrations {
   sanityData: {

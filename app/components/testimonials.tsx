@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/client'
+import { urlFor } from '@sanityData/client'
 
 // types
-import { SanityImg } from '@/app/types/sanity'
+import { SanityImg } from '@typescriptDefs/sanity'
 
 interface Testimonial {
   userImage: SanityImg

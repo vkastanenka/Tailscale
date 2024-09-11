@@ -1,11 +1,11 @@
 // components
-import Button from './button'
+import Button from '@components/button'
 
 // utilities
 import cx from 'classnames'
 
 // types
-import { SanityButton } from '../types/sanity'
+import { SanityButton } from '@typescriptDefs/sanity'
 
 interface HowItWorks {
   sanityData: {
@@ -159,12 +159,8 @@ const HowItWorksAnimationElement = () => {
               </div>
             </div>
             <div className="absolute left-[50%] top-[50%] aspect-[1] w-full max-w-[80%] -translate-x-1/2 -translate-y-1/2">
-              <div
-                className="relative h-full w-full"
-              >
-                <div
-                  className="ip-container absolute left-[30%] top-[10%] w-full max-w-[38.2%]"
-                >
+              <div className="relative h-full w-full">
+                <div className="ip-container absolute left-[30%] top-[10%] w-full max-w-[38.2%]">
                   <div className="t-18-mono relative w-full items-center justify-center rounded-full p-1 font-sfMono text-heading-black sm:p-[10px]">
                     <div className="absolute inset-0 h-full w-full rounded-full bg-white"></div>
                     <div className="relative block rounded-full  bg-grey-3 px-2 py-1 text-center xs:py-[11px] md:px-6">
@@ -172,9 +168,7 @@ const HowItWorksAnimationElement = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="ip-container absolute left-[-10%] top-[45%] w-full max-w-[38.2%]"
-                >
+                <div className="ip-container absolute left-[-10%] top-[45%] w-full max-w-[38.2%]">
                   <div className="t-18-mono relative w-full items-center justify-center rounded-full p-1 font-sfMono text-heading-black sm:p-[10px]">
                     <div className="absolute inset-0 h-full w-full rounded-full bg-white"></div>
                     <div className="relative block rounded-full  bg-grey-3 px-2 py-1 text-center xs:py-[11px] md:px-6">
@@ -182,9 +176,7 @@ const HowItWorksAnimationElement = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="ip-container absolute right-[-15%] top-[45%] w-full max-w-[42.4%]"
-                >
+                <div className="ip-container absolute right-[-15%] top-[45%] w-full max-w-[42.4%]">
                   <div className="t-18-mono relative w-full items-center justify-center rounded-full p-1 font-sfMono text-heading-black sm:p-[10px]">
                     <div className="absolute inset-0 h-full w-full rounded-full bg-white"></div>
                     <div className="relative block rounded-full  bg-grey-3 px-2 py-1 text-center xs:py-[11px] md:px-6">
@@ -192,9 +184,7 @@ const HowItWorksAnimationElement = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="ip-container absolute bottom-[11%] left-[30%] w-full max-w-[40.2%]"
-                >
+                <div className="ip-container absolute bottom-[11%] left-[30%] w-full max-w-[40.2%]">
                   <div className="t-18-mono relative w-full items-center justify-center rounded-full p-1 font-sfMono text-heading-black sm:p-[10px]">
                     <div className="absolute inset-0 h-full w-full rounded-full bg-white"></div>
                     <div className="relative block rounded-full  bg-grey-3 px-2 py-1 text-center xs:py-[11px] md:px-6">

@@ -1,7 +1,7 @@
 'use client'
 
 // components
-import Button from './button'
+import Button from '@components/button'
 import Link from 'next/link'
 
 // utils
@@ -9,7 +9,7 @@ import cx from 'classnames'
 import { useState } from 'react'
 
 // types
-import { SanityButton, SanityNavbarDropdown } from '../types/sanity'
+import { SanityButton, SanityNavbarDropdown } from '@typescriptDefs/sanity'
 
 interface MobileNav {
   afterButtons: SanityButton[]

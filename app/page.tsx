@@ -1,20 +1,20 @@
 // Components
-import Hero from '@/app/components/hero'
-import HowItWorks from './components/howItWorks'
-import Feature, { FeatureGradient } from './components/feature'
-import Integrations from './components/integrations'
-import Homelab from './components/homelab'
-import Testimonials from './components/testimonials'
-import Benefits from './components/benefits'
-import Security from './components/security'
-import Documentation from './components/documentation'
+import Hero from '@components/hero'
+import HowItWorks from '@components/howItWorks'
+import Feature, { FeatureGradient } from '@components/feature'
+import Integrations from '@components/integrations'
+import Homelab from '@components/homelab'
+import Testimonials from '@components/testimonials'
+import Benefits from '@components/benefits'
+import Security from '@components/security'
+import Documentation from '@components/documentation'
 
 // Utilities
 import cx from 'classnames'
 
 // Sanity
-import { sanityClient } from '../sanity/client'
-import { HOME_PAGE_QUERY } from '../sanity/queries'
+import { sanityClient } from '@sanityData/client'
+import { HOME_PAGE_QUERY } from '@sanityData/queries'
 
 export default async function Home() {
   const homePageData = await sanityClient.fetch(HOME_PAGE_QUERY)

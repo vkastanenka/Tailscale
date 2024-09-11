@@ -2,7 +2,7 @@
 import cx from 'classnames'
 import Link from 'next/link'
 
-import { SanityButton } from '../types/sanity'
+import { SanityButton } from '@typescriptDefs/sanity'
 
 interface Footer {
   afterButtons: SanityButton[]
