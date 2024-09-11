@@ -10,6 +10,7 @@ import { companyLogoType } from './companyLogoType'
 import colorInputTypes from './colorInputType'
 import testimonialTypes from './testimonialTypes'
 import buttonTypes from './buttonTypes'
+import layoutTypes from './layoutTypes'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ...colorInputTypes,
     ...testimonialTypes,
     ...buttonTypes,
+    ...layoutTypes,
   ],
 }

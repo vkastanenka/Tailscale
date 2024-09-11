@@ -6,13 +6,25 @@ import Link from 'next/link'
 
 // utils
 import cx from 'classnames'
-import { navLinks } from './navbar'
 import { useState } from 'react'
 
 // types
-import { NavItemData } from './navbar'
+import { SanityButton, SanityNavbarDropdown } from '../types/sanity'
 
-const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
+interface MobileNav {
+  afterButtons: SanityButton[]
+  afterCopyright: string
+  afterWireGuardTm: string
+  navbarItems: [SanityNavbarDropdown | SanityButton]
+}
+
+const MobileNav = ({
+  mobileNavIsVisible,
+  sanityData,
+}: {
+  mobileNavIsVisible: boolean
+  sanityData: MobileNav
+}) => {
   return (
     <div
       className={cx(
@@ -34,8 +46,22 @@ const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
       )}
     >
       <div className={cx('space-y-[22px]')}>
-        {navLinks.map((link, i) => {
-          return <MobileNavItem key={i} navItemData={link} />
+        {sanityData.navbarItems.map((navbarItem, i) => {
+          if ((navbarItem as SanityNavbarDropdown)._type === 'navbarDropdown') {
+            return (
+              <MobileNavItemDropdown
+                key={i}
+                sanityData={navbarItem as SanityNavbarDropdown}
+              />
+            )
+          } else {
+            return (
+              <MobileNavItemButton
+                key={i}
+                sanityData={navbarItem as SanityButton}
+              />
+            )
+          }
         })}
       </div>
       <Button
@@ -69,7 +95,7 @@ const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
           'text-[#24242499]'
         )}
       >
-        WireGuard is a registered trademark of Jason A. Donenfield
+        {sanityData.afterWireGuardTm}
       </div>
       <div
         className={cx(
@@ -80,28 +106,20 @@ const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
           'gap-[14px]'
         )}
       >
-        <Link
-          className={cx(
-            't-16',
-            '!leading-[1.05]',
-            'underline',
-            'underline-offset-4'
-          )}
-          href="https://tailscale.com/terms"
-        >
-          Terms of Service
-        </Link>
-        <Link
-          className={cx(
-            't-16',
-            '!leading-[1.05]',
-            'underline',
-            'underline-offset-4'
-          )}
-          href="https://tailscale.com/privacy-policy"
-        >
-          Privacy Policy
-        </Link>
+        {sanityData.afterButtons.map((button, i) => (
+          <Link
+            key={i}
+            className={cx(
+              't-16',
+              '!leading-[1.05]',
+              'underline',
+              'underline-offset-4'
+            )}
+            href={button.href}
+          >
+            {button.text}
+          </Link>
+        ))}
       </div>
       <div
         className={cx(
@@ -221,8 +239,7 @@ const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
           'text-[#24242499]'
         )}
       >
-        © 2024 Tailscale Inc. All rights reserved. Tailscale is a registered
-        trademark of Tailscale Inc.
+        {sanityData.afterCopyright}
       </div>
     </div>
   )
@@ -230,209 +247,172 @@ const MobileNav = ({ mobileNavIsVisible }: { mobileNavIsVisible: boolean }) => {
 
 export default MobileNav
 
-const MobileNavItem = ({ navItemData }: { navItemData: NavItemData }) => {
-  const [dropdownVisible, setDropdownVisible] = useState<boolean>(false)
+const navItemStyle = cx(
+  't-20',
+  'flex',
+  'w-full',
+  'items-center',
+  'justify-between',
+  'font-medium',
+  'cursor-pointer'
+)
 
-  const navLinkStyle = cx(
-    't-20',
-    'flex',
-    'w-full',
-    'items-center',
-    'justify-between',
-    'font-medium',
-    'cursor-pointer'
+const MobileNavItemContainer = ({ ...props }) => {
+  return (
+    <div
+      className={cx(
+        'relative',
+        'overflow-hidden',
+        'border-b',
+        'border-stroke-[rgb(229, 229, 229)]',
+        'pb-6'
+      )}
+      {...props}
+    />
   )
+}
 
-  const MobileNavItemContainer = ({ ...props }) => {
-    return (
-      <div
-        className={cx(
-          'relative',
-          'overflow-hidden',
-          'border-b',
-          'border-stroke-[rgb(229, 229, 229)]',
-          'pb-6'
-        )}
-        {...props}
-      />
-    )
-  }
-
-  if (navItemData._type === 'dropdown') {
-    return (
-      <MobileNavItemContainer
-        onClick={() => setDropdownVisible((prevState) => !prevState)}
-      >
-        <div className={navLinkStyle}>
-          <span>{navItemData.text}</span>
-          <span
-            className={cx(
-              'flex',
-              'h-[22px]',
-              'w-[22px]',
-              'items-center',
-              'justify-center',
-              'rounded-full',
-              'transition',
-              'duration-300',
-              'bg-black-4',
-              'text-white',
-              dropdownVisible ? '-rotate-90' : 'rotate-90'
-            )}
+const MobileNavItemDropdown = ({
+  sanityData,
+}: {
+  sanityData: SanityNavbarDropdown
+}) => {
+  const [dropdownVisible, setDropdownVisible] = useState<boolean>(false)
+  return (
+    <MobileNavItemContainer
+      onClick={() => setDropdownVisible((prevState) => !prevState)}
+    >
+      <div className={navItemStyle}>
+        <span>{sanityData.heading}</span>
+        <span
+          className={cx(
+            'flex',
+            'h-[22px]',
+            'w-[22px]',
+            'items-center',
+            'justify-center',
+            'rounded-full',
+            'transition',
+            'duration-300',
+            'bg-black-4',
+            'text-white',
+            dropdownVisible ? '-rotate-90' : 'rotate-90'
+          )}
+        >
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M5.83344 7.82482L8.83656 4.99835L5.83344 2.17188L5.24469 2.72658L7.24156 4.60599H1.16406V5.3907H7.24156L5.24469 7.27011L5.83344 7.82482Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </span>
-        </div>
-        {dropdownVisible ? (
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M5.83344 7.82482L8.83656 4.99835L5.83344 2.17188L5.24469 2.72658L7.24156 4.60599H1.16406V5.3907H7.24156L5.24469 7.27011L5.83344 7.82482Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </span>
+      </div>
+      {dropdownVisible ? (
+        <div
+          className={cx(
+            'flex',
+            'flex-col',
+            'transition',
+            'duration-300',
+            'will-change-[height]',
+            'opacity-1',
+            'h-auto'
+          )}
+        >
           <div
             className={cx(
+              'left-110px',
+              'top-[57px]',
+              'z-[100]',
               'flex',
               'flex-col',
-              'transition',
-              'duration-300',
-              'will-change-[height]',
-              'opacity-1',
-              'h-auto'
+              'justify-between',
+              'gap-8',
+              'rounded-2xl',
+              'bg-white',
+              'py-[30px]',
+              'will-change-transform',
+              'lg:absolute',
+              'lg:flex-row',
+              'lg:gap-[50px]',
+              'lg:border',
+              'lg:px-[30px]',
+              'xl:left-[-40px]'
             )}
           >
-            <div
-              className={cx(
-                'left-110px',
-                'top-[57px]',
-                'z-[100]',
-                'flex',
-                'flex-col',
-                'justify-between',
-                'gap-8',
-                'rounded-2xl',
-                'bg-white',
-                'py-[30px]',
-                'will-change-transform',
-                'lg:absolute',
-                'lg:flex-row',
-                'lg:gap-[50px]',
-                'lg:border',
-                'lg:px-[30px]',
-                'xl:left-[-40px]'
-              )}
-            >
-              {navItemData.columns?.map((column, i) => (
-                <div key={i} className={cx('flex-1', 'lg:min-w-[266px]')}>
-                  <div
-                    className={cx(
-                      't-14',
-                      'relative',
-                      'z-[10]',
-                      'mb-2',
-                      'text-[#706E6D]',
-                      'lg:mb-[15px]',
-                      'lg:ml-3'
-                    )}
-                  >
-                    {column.heading}
-                  </div>
-                  <ul>
-                    {column.links.map((link, i) => (
-                      <li
-                        key={i}
-                        className={cx('group', 'relative', 'whitespace-nowrap')}
-                      >
-                        <Link
-                          href={link.href}
-                          className={cx(
-                            'relative',
-                            'z-[10]',
-                            'inline-block',
-                            'w-full',
-                            'rounded-lg',
-                            'px-1',
-                            'py-2',
-                            'hover:bg-[#F9F7F6]',
-                            'lg:p-[12px]'
-                          )}
-                        >
-                          <div className={cx('flex', 'items-center', 'gap-2')}>
-                            <div
-                              className={cx(
-                                't-16',
-                                'relative',
-                                'z-[10]',
-                                'text-heading-black'
-                              )}
-                            >
-                              {link.text}
-                            </div>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+            {sanityData.columns.map((column, i) => (
+              <div key={i} className={cx('flex-1', 'lg:min-w-[266px]')}>
+                <div
+                  className={cx(
+                    't-14',
+                    'relative',
+                    'z-[10]',
+                    'mb-2',
+                    'text-[#706E6D]',
+                    'lg:mb-[15px]',
+                    'lg:ml-3'
+                  )}
+                >
+                  {column.heading}
                 </div>
-              ))}
-            </div>
+                <ul>
+                  {column.buttons.map((button, i) => (
+                    <li
+                      key={i}
+                      className={cx('group', 'relative', 'whitespace-nowrap')}
+                    >
+                      <Link
+                        href={button.href}
+                        className={cx(
+                          'relative',
+                          'z-[10]',
+                          'inline-block',
+                          'w-full',
+                          'rounded-lg',
+                          'px-1',
+                          'py-2',
+                          'hover:bg-[#F9F7F6]',
+                          'lg:p-[12px]'
+                        )}
+                      >
+                        <div className={cx('flex', 'items-center', 'gap-2')}>
+                          <div
+                            className={cx(
+                              't-16',
+                              'relative',
+                              'z-[10]',
+                              'text-heading-black'
+                            )}
+                          >
+                            {button.text}
+                          </div>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        ) : undefined}
-      </MobileNavItemContainer>
-    )
-  }
+        </div>
+      ) : undefined}
+    </MobileNavItemContainer>
+  )
+}
 
-  if (navItemData._type === 'link' && navItemData.href) {
-    return (
-      <MobileNavItemContainer>
-        <Link href={navItemData.href} className={navLinkStyle}>
-          <span>{navItemData.text}</span>
-          <span
-            className={cx(
-              'flex',
-              'h-[22px]',
-              'w-[22px]',
-              'items-center',
-              'justify-center',
-              'rounded-full',
-              'text-black',
-              'transition-transform',
-              'duration-300',
-              '-rotate-0',
-              'bg-grey-2'
-            )}
-          >
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M5.83344 7.82482L8.83656 4.99835L5.83344 2.17188L5.24469 2.72658L7.24156 4.60599H1.16406V5.3907H7.24156L5.24469 7.27011L5.83344 7.82482Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </span>
-        </Link>
-      </MobileNavItemContainer>
-    )
-  }
-
+const MobileNavItemButton = ({ sanityData }: { sanityData: SanityButton }) => {
   return (
     <MobileNavItemContainer>
-      <div className={navLinkStyle}>
-        <span>{navItemData.text}</span>
+      <Link href={sanityData.href} className={navItemStyle}>
+        <span>{sanityData.text}</span>
         <span
           className={cx(
             'flex',
@@ -463,7 +443,7 @@ const MobileNavItem = ({ navItemData }: { navItemData: NavItemData }) => {
             ></path>
           </svg>
         </span>
-      </div>
+      </Link>
     </MobileNavItemContainer>
   )
 }

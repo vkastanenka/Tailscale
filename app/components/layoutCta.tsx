@@ -4,10 +4,24 @@ import Image from 'next/image'
 
 // utils
 import cx from 'classnames'
+import { urlFor } from '@/sanity/lib/image'
 
-const LayoutCta = () => {
+// types
+import { SanityButton, SanityImg } from '../types/sanity'
+
+interface LayoutCta {
+  ctaButton1: SanityButton
+  ctaButton2: SanityButton
+  ctaCompanyLogos: SanityImg[]
+  ctaHeadingBottom: string
+  ctaHeadingTop1: string
+  ctaHeadingTop2: string
+  ctaImage: SanityImg
+}
+
+const LayoutCta = ({ sanityData, ...props }: { sanityData: LayoutCta }) => {
   return (
-    <section className={cx('pb-[50px]', 'pt-10', 'lg:pt-[175px]')}>
+    <section className={cx('pb-[50px]', 'pt-10', 'lg:pt-[175px]')} {...props}>
       <div
         className={cx(
           'is-wide',
@@ -102,8 +116,10 @@ const LayoutCta = () => {
                 className={cx('t-h3', 'text-white', 'mb-4', 'md:mb-8')}
                 style={{ color: 'rgb(98,148,241)', maxWidth: '292px' }}
               >
-                {`Try Tailscale for `}
-                <span className={cx('text-white')}>free</span>
+                {sanityData.ctaHeadingTop1}
+                <span className={cx('text-white')}>
+                  {sanityData.ctaHeadingTop2}
+                </span>
               </h2>
               <div
                 className={cx('w-full', 'xs:w-auto', 'flex', 'justify-start')}
@@ -124,9 +140,9 @@ const LayoutCta = () => {
                 >
                   <Button
                     buttonStyle={cx('!bg-white', '!text-black')}
-                    href="https://login.tailscale.com/start"
+                    href={sanityData.ctaButton1.href}
                   >
-                    Get started
+                    {sanityData.ctaButton1.text}
                   </Button>
                 </div>
               </div>
@@ -144,13 +160,10 @@ const LayoutCta = () => {
             style={{ color: 'rgb(31, 30, 30)' }}
           >
             <div className={cx('t-h5', '!font-normal', 'mb-3')}>
-              Schedule a demo
+              {sanityData.ctaHeadingBottom}
             </div>
-            <Button
-              href="https://tailscale.com/contact/sales"
-              includeIcon={false}
-            >
-              Contact sales
+            <Button href={sanityData.ctaButton2.href} includeIcon={false}>
+              {sanityData.ctaButton2.text}
             </Button>
           </div>
         </div>
@@ -167,13 +180,13 @@ const LayoutCta = () => {
           )}
         >
           <div className={cx('px-5')} style={{ transform: 'translateY(2px)' }}>
-            {/* <Image
+            <Image
               className={cx('md:block', 'max-auto')}
-                alt={sanityData.heroImageDesktop.altText}
-                src={urlFor(sanityData.heroImageDesktop.url).url()}
-                width={sanityData.heroImageDesktop.dimensions.width}
-                height={sanityData.heroImageDesktop.dimensions.height}
-            /> */}
+              alt={sanityData.ctaImage.altText}
+              src={urlFor(sanityData.ctaImage.url).url()}
+              width={sanityData.ctaImage.dimensions.width}
+              height={sanityData.ctaImage.dimensions.height}
+            />
           </div>
         </div>
       </div>
@@ -189,7 +202,7 @@ const LayoutCta = () => {
               'lg:justify-between'
             )}
           >
-            {[1, 2, 3, 4, 5].map((companyLogo, i) => (
+            {sanityData.ctaCompanyLogos.map((companyLogo, i) => (
               <div
                 key={i}
                 className={cx(
@@ -201,13 +214,13 @@ const LayoutCta = () => {
                   'md:w-auto'
                 )}
               >
-                {/* <Image
-              className={cx('md:block', 'max-auto')}
-                alt={sanityData.heroImageDesktop.altText}
-                src={urlFor(sanityData.heroImageDesktop.url).url()}
-                width={sanityData.heroImageDesktop.dimensions.width}
-                height={sanityData.heroImageDesktop.dimensions.height}
-            /> */}
+                <Image
+                  className={cx('md:block', 'max-auto')}
+                  alt={companyLogo.altText}
+                  src={urlFor(companyLogo.url).url()}
+                  width={companyLogo.dimensions.width}
+                  height={companyLogo.dimensions.height}
+                />
               </div>
             ))}
           </div>

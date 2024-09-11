@@ -2,105 +2,18 @@
 import cx from 'classnames'
 import Link from 'next/link'
 
-const footerColumns = [
-  {
-    heading: 'Product',
-    links: [
-      {
-        text: 'How it works',
-        href: 'https://tailscale.com/blog/how-tailscale-works',
-      },
-      { text: 'Pricing', href: 'https://tailscale.com/pricing' },
-      { text: 'Integrations', href: 'https://tailscale.com/integrations' },
-      { text: 'Features', href: 'https://tailscale.com/features' },
-      { text: 'Compare Tailscale', href: 'https://tailscale.com/compare' },
-    ],
-  },
-  {
-    heading: 'Use Cases',
-    links: [
-      {
-        text: 'Business VPN',
-        href: 'https://tailscale.com/use-cases/business-vpn',
-      },
-      {
-        text: 'Remote Access',
-        href: 'https://tailscale.com/use-cases/remote-access',
-      },
-      {
-        text: 'Site-to-Site Networking',
-        href: 'https://tailscale.com/use-cases/site-to-site-networking',
-      },
-      { text: 'Homelab', href: 'https://tailscale.com/use-cases/homelab' },
-      { text: 'Enterprise', href: 'https://tailscale.com/enterprise' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    links: [
-      { text: 'Blog', href: 'https://tailscale.com/blog' },
-      {
-        text: 'Events & Webinars',
-        href: 'https://tailscale.com/events-webinars',
-      },
-    ],
-  },
-  {
-    heading: 'Company',
-    links: [
-      { text: 'Company', href: 'https://tailscale.com/company' },
-      { text: 'Careers', href: 'https://tailscale.com/careers' },
-      { text: 'Press', href: 'https://tailscale.com/press' },
-    ],
-  },
-  {
-    heading: 'Help & Support',
-    links: [
-      { text: 'Support', href: 'https://tailscale.com/contact/support' },
-      { text: 'Sales', href: 'https://tailscale.com/contact/sales' },
-      { text: 'Security', href: 'https://tailscale.com/security' },
-      { text: 'Legal', href: 'https://tailscale.com/legal' },
-      { text: 'Open Source', href: 'https://tailscale.com/opensource' },
-      { text: 'Changelog', href: 'https://tailscale.com/changelog' },
-    ],
-  },
-  {
-    heading: 'Learn',
-    links: [
-      {
-        text: 'SSH keys',
-        href: 'https://tailscale.com/learn/generate-ssh-keys',
-      },
-      {
-        text: 'Docker SSH',
-        href: 'https://tailscale.com/learn/ssh-into-docker-container',
-      },
-      { text: 'DevSecOps', href: 'https://tailscale.com/learn/devsecops' },
-      { text: 'Multicloud', href: 'https://tailscale.com/learn/multicloud' },
-      {
-        text: 'NAT Traversal',
-        href: 'https://tailscale.com/blog/how-nat-traversal-works',
-      },
-      {
-        text: 'MagicDNS',
-        href: 'https://tailscale.com/blog/2021-09-private-dns-with-magicdns',
-      },
-      {
-        text: 'PAM',
-        href: 'https://tailscale.com/learn/privileged-access-management',
-      },
-      {
-        text: 'PoLP',
-        href: 'https://tailscale.com/learn/principle-of-least-privilege',
-      },
-      { text: 'All articles', href: 'https://tailscale.com/learn' },
-    ],
-  },
-]
+import { SanityButton } from '../types/sanity'
 
-const Footer = () => {
+interface Footer {
+  afterButtons: SanityButton[]
+  afterCopyright: string
+  afterWireGuardTm: string
+  footerItems: { heading: string; buttons: SanityButton[] }[]
+}
+
+const Footer = ({ sanityData, ...props }: { sanityData: Footer }) => {
   return (
-    <footer className={cx('pb-16', 'md:pb-28', 'md:pt-20')}>
+    <footer className={cx('pb-16', 'md:pb-28', 'md:pt-20')} {...props}>
       <div
         className={cx(
           'container',
@@ -115,13 +28,13 @@ const Footer = () => {
           'lg:grid-cols-6'
         )}
       >
-        {footerColumns.map((column, i) => {
+        {sanityData.footerItems.map((footerItem, i) => {
           return (
             <div key={i}>
               <p
                 className={cx('t-16', '!leading-[1.05]', 'text-heading-black')}
               >
-                {column.heading}
+                {footerItem.heading}
               </p>
               <div
                 className={cx(
@@ -133,7 +46,7 @@ const Footer = () => {
                   'lg:gap-4'
                 )}
               >
-                {column.links.map((link, i) => {
+                {footerItem.buttons.map((link, i) => {
                   return (
                     <Link
                       key={i}
@@ -298,34 +211,25 @@ const Footer = () => {
           <div
             className={cx('flex', 'flex-col', 'gap-[14px]', 'md:col-span-2')}
           >
-            <Link
-              href="https://tailscale.com/terms"
-              className={cx(
-                't-14',
-                '!leading-[1.05]',
-                'underline',
-                'transition-colors',
-                'duration-300',
-                'text-[#302c2c99]',
-                'hover:text-[#000]'
-              )}
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="https://tailscale.com/privacy-policy"
-              className={cx(
-                't-14',
-                '!leading-[1.05]',
-                'underline',
-                'transition-colors',
-                'duration-300',
-                'text-[#302c2c99]',
-                'hover:text-[#000]'
-              )}
-            >
-              Privacy Policy
-            </Link>
+            {sanityData.afterButtons.map((button, i) => {
+              return (
+                <Link
+                  key={i}
+                  href={button.href}
+                  className={cx(
+                    't-14',
+                    '!leading-[1.05]',
+                    'underline',
+                    'transition-colors',
+                    'duration-300',
+                    'text-[#302c2c99]',
+                    'hover:text-[#000]'
+                  )}
+                >
+                  {button.text}
+                </Link>
+              )
+            })}
           </div>
           <div className={cx('md:col-span-3')}>
             <div
@@ -336,7 +240,7 @@ const Footer = () => {
                 'text-[#302c2c99]'
               )}
             >
-              {`WireGuard is a registered trademark of Jason A. Donenfeld.`}
+              {sanityData.afterWireGuardTm}
             </div>
           </div>
           <div
@@ -526,8 +430,7 @@ const Footer = () => {
               'text-[#302c2c99]'
             )}
           >
-            © 2024 Tailscale Inc. All rights reserved. Tailscale is a
-            registered trademark of Tailscale Inc.
+            {sanityData.afterCopyright}
           </div>
         </div>
       </div>

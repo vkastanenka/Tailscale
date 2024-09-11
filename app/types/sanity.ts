@@ -1,4 +1,5 @@
 export interface SanityButton {
+  _type: string
   text: string
   href: string
 }
@@ -14,4 +15,10 @@ interface SanityImgDimensions {
   width: number
   aspectRatio: number
   height: number
+}
+
+export interface SanityNavbarDropdown {
+  _type: string
+  heading: string
+  columns: { heading: string; buttons: SanityButton[] }[]
 }

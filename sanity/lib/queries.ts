@@ -1,5 +1,28 @@
 import { defineQuery } from 'next-sanity'
 
+export const LAYOUT_QUERY = defineQuery(`*[_type == "layout"][0]{
+  // after
+  afterButtons[]->,
+  afterCopyright,
+  afterWireGuardTm,
+
+  // cta
+  ctaButton1->,
+  ctaButton2->,
+  ctaCompanyLogos[]->{"url": image.image.asset->url, "dimensions": image.image.asset->metadata.dimensions, "altText": image.altText},
+  ctaHeadingBottom,
+  ctaHeadingTop1,
+  ctaHeadingTop2,
+  ctaImage{"url": image.asset->url, "dimensions": image.asset->metadata.dimensions, altText, },
+
+  // footer
+  footerItems[],
+
+  // navbar
+  navbarCtaItems[]->,
+  navbarItems[]
+}`)
+
 export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{
   title,
 

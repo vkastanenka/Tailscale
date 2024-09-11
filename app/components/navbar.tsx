@@ -7,156 +7,23 @@ import Link from 'next/link'
 // utils
 import cx from 'classnames'
 import { useState, useEffect } from 'react'
+import useScrolled from '../utilities/useScrolled'
 
 // types
 import { Dispatch, SetStateAction } from 'react'
-
-const useScrolled = () => {
-  const [windowScrolled, setWindowScrolled] = useState(0)
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handler = () => setWindowScrolled(window.scrollY)
-      window.addEventListener('scroll', handler)
-      return () => window.removeEventListener('scroll', handler)
-    }
-  })
-
-  return windowScrolled
-}
-
-export const navLinks = [
-  {
-    _type: 'dropdown',
-    text: 'Product',
-    href: '/',
-    columns: [
-      {
-        heading: 'Meet Tailscale',
-        links: [
-          {
-            text: 'How it works',
-            href: 'https://tailscale.com/blog/how-tailscale-works',
-          },
-          {
-            text: 'Why Tailscale',
-            href: 'https://tailscale.com/why-tailscale',
-          },
-          {
-            text: 'WireGuard® for Enterprises',
-            href: 'https://tailscale.com/wireguard-vpn',
-          },
-          {
-            text: 'Bring Tailscale to Work',
-            href: 'https://tailscale.com/bring-tailscale-to-work',
-          },
-        ],
-      },
-      {
-        heading: 'Explore',
-        links: [
-          {
-            text: 'Integrations',
-            href: 'https://tailscale.com/integrations',
-          },
-          {
-            text: 'Features',
-            href: 'https://tailscale.com/features',
-          },
-          {
-            text: 'Compare Tailscale',
-            href: 'https://tailscale.com/compare',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    _type: 'dropdown',
-    text: 'Solutions',
-    href: '/',
-    columns: [
-      {
-        heading: 'By use-case',
-        links: [
-          {
-            text: 'Remote Access',
-            href: 'https://tailscale.com/use-cases/remote-access',
-          },
-          {
-            text: 'Multi-Cloud Networking',
-            href: 'https://tailscale.com/use-cases/multi-cloud-networking',
-          },
-          {
-            text: 'Kubernetes Networking',
-            href: 'https://tailscale.com/use-cases/kubernetes',
-          },
-          {
-            text: 'Edge and IoT Deployments',
-            href: 'https://tailscale.com/use-cases/iot',
-          },
-          {
-            text: 'Zero Trust Networking',
-            href: 'https://tailscale.com/use-cases/zero-trust-networking',
-          },
-          {
-            text: 'AI Workloads',
-            href: 'https://tailscale.com/use-cases/ai',
-          },
-          {
-            text: 'Secure Saas',
-            href: 'https://tailscale.com/use-cases/secure-saas',
-          },
-          {
-            text: 'Business VPN',
-            href: 'https://tailscale.com/use-cases/business-vpn',
-          },
-          {
-            text: 'Homelab',
-            href: 'https://tailscale.com/use-cases/homelab',
-          },
-        ],
-      },
-      {
-        heading: 'By role',
-        links: [
-          {
-            text: 'DevOps',
-            href: 'https://tailscale.com/solutions/devops',
-          },
-          {
-            text: 'IT',
-            href: 'https://tailscale.com/solutions/it',
-          },
-          {
-            text: 'Security',
-            href: 'https://tailscale.com/solutions/security',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    _type: 'link',
-    text: 'Enterprise',
-    href: 'https://tailscale.com/enterprise',
-  },
-  { _type: 'link', text: 'Customers', href: 'https://tailscale.com/customers' },
-  {
-    _type: 'link',
-    text: 'Docs',
-    href: 'https://tailscale.com/kb/1017/install',
-  },
-  { _type: 'link', text: 'Blog', href: 'https://tailscale.com/blog' },
-  { _type: 'link', text: 'Pricing', href: 'https://tailscale.com/pricing' },
-]
+import { SanityNavbarDropdown, SanityButton } from '../types/sanity'
 
 const Navbar = ({
   mobileNavIsVisible,
   setMobileNavVisible,
+  sanityData,
 }: {
   mobileNavIsVisible: boolean
   setMobileNavVisible: Dispatch<SetStateAction<boolean>>
+  sanityData: {
+    navbarCtaItems: SanityButton[]
+    navbarItems: [SanityNavbarDropdown | SanityButton]
+  }
 }) => {
   const scrollY = useScrolled()
   const [activeNavItemIdx, setActiveNavItemIdx] = useState<number>()
@@ -315,16 +182,27 @@ const Navbar = ({
             </svg>
           </Link>
           <nav className={cx('relative', 'hidden', 'lg:flex', 'lg:gap-6')}>
-            {navLinks.map((link, i) => {
-              return (
-                <NavItem
-                  key={i}
-                  navItemIdx={i}
-                  navItemData={link}
-                  activeNavItemIdx={activeNavItemIdx}
-                  setActiveNavItemIdx={setActiveNavItemIdx}
-                />
-              )
+            {sanityData.navbarItems.map((navbarItem, i) => {
+              if (
+                (navbarItem as SanityNavbarDropdown)._type === 'navbarDropdown'
+              ) {
+                return (
+                  <NavItemDropdown
+                    key={i}
+                    navItemIdx={i}
+                    sanityData={navbarItem as SanityNavbarDropdown}
+                    activeNavItemIdx={activeNavItemIdx}
+                    setActiveNavItemIdx={setActiveNavItemIdx}
+                  />
+                )
+              } else {
+                return (
+                  <NavItemButton
+                    key={i}
+                    sanityData={navbarItem as SanityButton}
+                  />
+                )
+              }
             })}
           </nav>
         </div>
@@ -336,34 +214,25 @@ const Navbar = ({
             'lg:gap-[25px]'
           )}
         >
-          <Link
-            href="https://tailscale.com/download"
-            className={cx(
-              't-14',
-              'font-medium',
-              'opacity-80',
-              'transition-colors',
-              'duration-300',
-              'text-heading-[#302c2ccc]',
-              'hover:text-[#000]'
-            )}
-          >
-            Download
-          </Link>
-          <Link
-            href="https://login.tailscale.com/welcome"
-            className={cx(
-              't-14',
-              'font-medium',
-              'opacity-80',
-              'transition-colors',
-              'duration-300',
-              'text-heading-[#302c2ccc]',
-              'hover:text-[#000]'
-            )}
-          >
-            Log in
-          </Link>
+          {sanityData.navbarCtaItems.map((button, i) => {
+            return (
+              <Link
+                key={i}
+                href={button.href}
+                className={cx(
+                  't-14',
+                  'font-medium',
+                  'opacity-80',
+                  'transition-colors',
+                  'duration-300',
+                  'text-heading-[#302c2ccc]',
+                  'hover:text-[#000]'
+                )}
+              >
+                {button.text}
+              </Link>
+            )
+          })}
           <Button includeIcon={false} href="https://login.tailscale.com/start">
             Get started
           </Button>
@@ -436,158 +305,18 @@ const Navbar = ({
 
 export default Navbar
 
-export interface NavItemData {
-  _type: string
-  text: string
-  href?: string
-  columns?: { heading: string; links: { text: string; href: string }[] }[]
-}
-
-const NavItem = ({
-  navItemIdx,
-  activeNavItemIdx,
-  setActiveNavItemIdx,
-  navItemData,
-  ...props
-}: {
-  navItemIdx: number
-  activeNavItemIdx?: number
-  setActiveNavItemIdx: Dispatch<SetStateAction<number | undefined>>
-  navItemData: NavItemData
-}) => {
-  const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false)
-
-  const navItemStyle = cx(
-    'group',
-    'relative',
-    'text-[14px]',
-    'font-medium',
-    'leading-normal',
-    'tracking-[-0.28px]',
-    'transition-colors',
-    'duration-300',
-    'text-[#302c2ccc]',
-    'hover:text-[#302c2c]'
-  )
-
-  useEffect(() => {
-    if (activeNavItemIdx !== navItemIdx) {
-      setDropdownIsActive(false)
-    }
-  }, [activeNavItemIdx, navItemIdx])
-
-  if (navItemData._type === 'dropdown') {
-    return (
-      <div
-        role="button"
-        aria-haspopup="true"
-        tabIndex={0}
-        className={navItemStyle}
-        onClick={() => {
-          setActiveNavItemIdx(navItemIdx)
-          setDropdownIsActive((prevState) => !prevState)
-        }}
-        {...props}
-      >
-        <span>{navItemData.text}</span>
-        <NavItemUnderline />
-        {dropdownIsActive && activeNavItemIdx === navItemIdx ? (
-          <div
-            className={cx(
-              'left-[-110px]',
-              'top-[57px]',
-              'z-[100]',
-              'flex',
-              'flex-col',
-              'justify-between',
-              'gap-8',
-              'rounded-2xl',
-              'bg-white',
-              'py-[30px]',
-              'will-change-transform',
-              'lg:absolute',
-              'lg:flex-row',
-              'lg:gap-[50px]',
-              'lg:border',
-              'lg:px-[30px]',
-              'xl:left-[-40px]'
-            )}
-          >
-            {navItemData.columns?.map((column, i) => (
-              <div key={i} className={cx('flex-1', 'lg:min-w-[266px]')}>
-                <div
-                  className={cx(
-                    't-14',
-                    'relative',
-                    'z-[10]',
-                    'mb-2',
-                    'text-[#706E6D]',
-                    'lg:mb-[15px]',
-                    'lg:ml-3'
-                  )}
-                >
-                  {column.heading}
-                </div>
-                <ul>
-                  {column.links.map((link, i) => (
-                    <li
-                      key={i}
-                      className={cx('group', 'relative', 'whitespace-nowrap')}
-                    >
-                      <Link
-                        href={link.href}
-                        className={cx(
-                          'relative',
-                          'z-[10]',
-                          'inline-block',
-                          'w-full',
-                          'rounded-lg',
-                          'px-1',
-                          'py-2',
-                          'hover:bg-[#F9F7F6]',
-                          'lg:p-[12px]'
-                        )}
-                      >
-                        <div className={cx('flex', 'items-center', 'gap-2')}>
-                          <div
-                            className={cx(
-                              't-16',
-                              'relative',
-                              'z-[10]',
-                              'text-heading-black'
-                            )}
-                          >
-                            {link.text}
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        ) : undefined}
-      </div>
-    )
-  }
-
-  if (navItemData._type === 'link' && navItemData.href) {
-    return (
-      <Link href={navItemData.href} className={navItemStyle} {...props}>
-        <span>{navItemData.text}</span>
-        <NavItemUnderline />
-      </Link>
-    )
-  }
-
-  return (
-    <div className={navItemStyle} {...props}>
-      <span>{navItemData.text}</span>
-      <NavItemUnderline />
-    </div>
-  )
-}
+const navItemStyle = cx(
+  'group',
+  'relative',
+  'text-[14px]',
+  'font-medium',
+  'leading-normal',
+  'tracking-[-0.28px]',
+  'transition-colors',
+  'duration-300',
+  'text-[#302c2ccc]',
+  'hover:text-[#302c2c]'
+)
 
 const NavItemUnderline = () => {
   return (
@@ -609,5 +338,134 @@ const NavItemUnderline = () => {
         'bg-[#302c2ccc]'
       )}
     />
+  )
+}
+
+const NavItemDropdown = ({
+  navItemIdx,
+  activeNavItemIdx,
+  setActiveNavItemIdx,
+  sanityData,
+  ...props
+}: {
+  navItemIdx: number
+  activeNavItemIdx?: number
+  setActiveNavItemIdx: Dispatch<SetStateAction<number | undefined>>
+  sanityData: SanityNavbarDropdown
+}) => {
+  const [dropdownVisible, setDropdownVisible] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (activeNavItemIdx !== navItemIdx) {
+      setDropdownVisible(false)
+    }
+  }, [activeNavItemIdx, navItemIdx])
+
+  return (
+    <div
+      role="button"
+      aria-haspopup="true"
+      tabIndex={0}
+      className={navItemStyle}
+      onClick={() => {
+        setActiveNavItemIdx(navItemIdx)
+        setDropdownVisible((prevState) => !prevState)
+      }}
+      {...props}
+    >
+      <span>{sanityData.heading}</span>
+      <NavItemUnderline />
+      {dropdownVisible && activeNavItemIdx === navItemIdx ? (
+        <div
+          className={cx(
+            'left-[-110px]',
+            'top-[57px]',
+            'z-[100]',
+            'flex',
+            'flex-col',
+            'justify-between',
+            'gap-8',
+            'rounded-2xl',
+            'bg-white',
+            'py-[30px]',
+            'will-change-transform',
+            'lg:absolute',
+            'lg:flex-row',
+            'lg:gap-[50px]',
+            'lg:border',
+            'lg:px-[30px]',
+            'xl:left-[-40px]'
+          )}
+        >
+          {sanityData.columns.map((column, i) => (
+            <div key={i} className={cx('flex-1', 'lg:min-w-[266px]')}>
+              <div
+                className={cx(
+                  't-14',
+                  'relative',
+                  'z-[10]',
+                  'mb-2',
+                  'text-[#706E6D]',
+                  'lg:mb-[15px]',
+                  'lg:ml-3'
+                )}
+              >
+                {column.heading}
+              </div>
+              <ul>
+                {column.buttons.map((button, i) => (
+                  <li
+                    key={i}
+                    className={cx('group', 'relative', 'whitespace-nowrap')}
+                  >
+                    <Link
+                      href={button.href}
+                      className={cx(
+                        'relative',
+                        'z-[10]',
+                        'inline-block',
+                        'w-full',
+                        'rounded-lg',
+                        'px-1',
+                        'py-2',
+                        'hover:bg-[#F9F7F6]',
+                        'lg:p-[12px]'
+                      )}
+                    >
+                      <div className={cx('flex', 'items-center', 'gap-2')}>
+                        <div
+                          className={cx(
+                            't-16',
+                            'relative',
+                            'z-[10]',
+                            'text-heading-black'
+                          )}
+                        >
+                          {button.text}
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : undefined}
+    </div>
+  )
+}
+
+const NavItemButton = ({
+  sanityData,
+  ...props
+}: {
+  sanityData: SanityButton
+}) => {
+  return (
+    <Link href={sanityData.href} className={navItemStyle} {...props}>
+      <span>{sanityData.text}</span>
+      <NavItemUnderline />
+    </Link>
   )
 }
