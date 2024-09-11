@@ -30,7 +30,7 @@ const Documentation = ({
 }: Documentation): JSX.Element => {
   return (
     <section
-      className={cx('overflow-hidden', 'p-top-175', 'p-bottom-175')}
+      className={cx('overflow-hidden', 'p-top-175')}
       {...props}
     >
       <div className={cx('space-y-8', 'md:!space-y-20', 'container')}>

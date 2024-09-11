@@ -3,6 +3,8 @@
 // components
 import Navbar from './components/navbar'
 import MobileNav from './components/mobileNav'
+import LayoutCta from './components/layoutCta'
+import Footer from './components/footer'
 
 // utils
 import cx from 'classnames'
@@ -29,6 +31,8 @@ const LayoutClient = ({ ...props }) => {
       />
       <MobileNav mobileNavIsVisible={mobileNavVisible} />
       {props.children}
+      <LayoutCta />
+      <Footer />
     </div>
   )
 }
