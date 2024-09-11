@@ -10,7 +10,7 @@ import { SanityButton, SanityImg } from '@/app/types/sanity'
 
 // Utilities
 import cx from 'classnames'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/sanity/client'
 import { useInView } from 'react-intersection-observer'
 
 interface Feature {

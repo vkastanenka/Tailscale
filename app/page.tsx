@@ -13,11 +13,11 @@ import Documentation from './components/documentation'
 import cx from 'classnames'
 
 // Sanity
-import { client } from '@/sanity/lib/client'
-import { HOME_PAGE_QUERY } from '@/sanity/lib/queries'
+import { sanityClient } from '../sanity/client'
+import { HOME_PAGE_QUERY } from '../sanity/queries'
 
 export default async function Home() {
-  const homePageData = await client.fetch(HOME_PAGE_QUERY)
+  const homePageData = await sanityClient.fetch(HOME_PAGE_QUERY)
 
   return (
     <main className={cx('mt-[-60px]', 'lg:mt-[-66px]')}>

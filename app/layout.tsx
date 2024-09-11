@@ -7,8 +7,8 @@ import { inter } from './fonts'
 import './globals.css'
 
 // Sanity
-import { client } from '@/sanity/lib/client'
-import { LAYOUT_QUERY } from '@/sanity/lib/queries'
+import { sanityClient } from '../sanity/client'
+import { LAYOUT_QUERY } from '../sanity/queries'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,7 +20,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const layoutData = await client.fetch(LAYOUT_QUERY)
+  const layoutData = await sanityClient.fetch(LAYOUT_QUERY)
 
   return (
     <html lang="en">

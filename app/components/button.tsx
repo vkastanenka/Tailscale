@@ -170,26 +170,28 @@ const ButtonUnderlined = ({
       {...props}
     >
       <span className={cx('transition-colors')}>{props.children}</span>
-      <span
-        className={cx(
-          'block',
-          'will-change-transform',
-          'group-hover:animate-bounceX'
-        )}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 18"
-          className={cx('w-4')}
+      {includeIcon ? (
+        <span
+          className={cx(
+            'block',
+            'will-change-transform',
+            'group-hover:animate-bounceX'
+          )}
         >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 18"
+            className={cx('w-4')}
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M9.471 13.9149L14.276 9.10993L9.471 4.30493L8.529 5.24793L11.724 8.44293H2V9.77693H11.724L8.529 12.9719L9.471 13.9149Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </span>
+      ) : undefined}
       <div
         className={cx(
           'absolute',

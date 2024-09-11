@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 // utils
 import cx from 'classnames'
-import { urlFor } from '@/sanity/lib/image'
+import { urlFor } from '@/sanity/client'
 
 // types
 import { SanityButton, SanityImg } from '@/app/types/sanity'
